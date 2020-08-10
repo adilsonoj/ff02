@@ -3,13 +3,13 @@ package br.mil.mar.amrj.conf;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.cache.annotation.EnableCaching;
+import javax.swing.text.DateFormatter;
+
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
-import org.springframework.format.datetime.DateFormatter;
 import org.springframework.format.datetime.DateFormatterRegistrar;
 import org.springframework.format.support.DefaultFormattingConversionService;
 import org.springframework.format.support.FormattingConversionService;
@@ -49,15 +49,15 @@ public class WebConfiguration extends WebMvcConfigurationSupport {
 		return messageSource;
 	}
 
-	@Bean // configurar o formato da data em todo sistema
-	public FormattingConversionService mvcConversionService() {
-		DefaultFormattingConversionService conversionService = new DefaultFormattingConversionService();
-		DateFormatterRegistrar registrar = new DateFormatterRegistrar();
-		registrar.setFormatter(new DateFormatter("dd/MM/yyyy"));
-		registrar.registerFormatters(conversionService);
-
-		return conversionService;
-	}
+//	@Bean // configurar o formato da data em todo sistema
+//	public FormattingConversionService mvcConversionService() {
+//		DefaultFormattingConversionService conversionService = new DefaultFormattingConversionService();
+//		DateFormatterRegistrar registrar = new DateFormatterRegistrar();
+//		registrar.setFormatter(new DateFormatter("dd/MM/yyyy"));
+//		registrar.registerFormatters(conversionService);
+//
+//		return conversionService;
+//	}
 
 	@Bean // para trabalhar com upload arquivos
 	public MultipartResolver multipartResolver() {

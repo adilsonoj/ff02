@@ -42,11 +42,15 @@ public class JPAConfiguration {
 //        dataSource.setPassword("usdspc01");
 //        dataSource.setUrl("jdbc:oracle:thin:@10.1.32.50:1521:amrjdsv");
         
-        dataSource.setUsername("admin");
-        dataSource.setPassword("adminsystem"); // modifique para a senha do seu banco
-        dataSource.setUrl("jdbc:oracle:thin:@localhost:1521:xe");
-        dataSource.setDriverClassName("oracle.jdbc.OracleDriver");
-        factoryBean.setDataSource(dataSource);
+//        dataSource.setUsername("admin");
+//        dataSource.setPassword("adminsystem"); // modifique para a senha do seu banco
+//        dataSource.setUrl("jdbc:oracle:thin:@localhost:1521:xe");
+//        dataSource.setDriverClassName("oracle.jdbc.OracleDriver");
+      
+//        	dataSource.setUsername("usdspc1u"); 
+//        	dataSource.setPassword("");
+//        	dataSource.setUrl("jdbc:oracle:thin:@10.1.32.50:1521:amrjdsv");
+//        	factoryBean.setDataSource(dataSource);
         
         Properties props = new Properties();
         props.setProperty("hibernate.dialect", "org.hibernate.dialect.OracleDialect");
