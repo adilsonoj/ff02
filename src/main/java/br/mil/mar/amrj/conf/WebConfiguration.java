@@ -3,16 +3,11 @@ package br.mil.mar.amrj.conf;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.text.DateFormatter;
-
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
-import org.springframework.format.datetime.DateFormatterRegistrar;
-import org.springframework.format.support.DefaultFormattingConversionService;
-import org.springframework.format.support.FormattingConversionService;
 import org.springframework.web.accept.ContentNegotiationManager;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartResolver;
@@ -26,7 +21,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = { "br.mil.mar.amrj" })
+@ComponentScan(basePackages = { "br.mil.mar.amrj.controller" })
 public class WebConfiguration extends WebMvcConfigurationSupport {
 
 	@Bean

@@ -12,7 +12,7 @@ import javax.persistence.Table;
 public class TipoUnidConsumo {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue
 	@Column(name="CD_TIPO_UNID_CONS")
 	private Integer cdTipoUnidCons;
 	

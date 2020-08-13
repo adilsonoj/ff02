@@ -1,0 +1,60 @@
+@charset "utf-8";
+/* CSS Document */
+
+#footer-brasil {
+   background: none repeat scroll 0% 0% #0042b1;
+   bottom:0;
+   max-width: 100%;
+   padding: 1em 0px;
+   position:relative;
+   width:100%;
+}
+#footer-brasil, .page-wrap:after {
+  height: 77px; 
+}
+#footer-brasil {
+   background: none repeat scroll 0% 0% #0042b1;
+   padding: 1em 0px;
+   max-width: 100%;
+}
+div#wrapper-footer-brasil {
+	position: relative;
+	overflow: hidden;
+	margin: 0 auto;
+	width: auto;
+	padding: 0 20px;
+	max-width: 960px
+}
+#wrapper-footer-brasil .logo-acesso-footer {
+	float: left;
+	width: 107px;
+	background:url('logo-acesso-a-informacao.png') center no-repeat;
+	height: 49px
+}
+#wrapper-footer-brasil .logo-brasil-footer {
+	float: right;
+	width: 155px;
+	background:url('governo_federal.png') center no-repeat !important;
+	height: 48px
+}
+/*body.contraste #footer-brasil {
+	background: #000 !important
+}
+
+@media screen and (min-width: 960px) {
+#wrapper-footer-brasil {
+	width: 960px
+}
+}
+
+@media print {
+#wrapper-footer-brasil {
+	border-top: 2px solid #dfdfdf
+}
+#wrapper-footer-brasil:before {
+	content: "Barra GovBr";
+	color: #606060;
+	font-size: 12px;
+	font-family: "Open Sans", Arial, Helvetica, sans-serif
+}
+*/

@@ -14,7 +14,7 @@ import javax.persistence.Table;
 public class UnidadeConsumo {
 	
 	@Id
-	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	@GeneratedValue
 	@Column(name="CD_UNID_CONS")
 	private Integer cdUnidCons;
 	

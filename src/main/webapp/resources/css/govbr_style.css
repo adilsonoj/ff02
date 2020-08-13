@@ -1,0 +1,287 @@
+/*@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,600,400italic,600italic,700,700italic,800,800italic&subset=latin,greek,greek-ext);*/
+@import '../fonts/font-awesome/css/font-awesome.min.css';
+@import '../fonts/font-govbr/font-govbr.css';
+
+#header .header-top {
+  font-size: 10px;
+}
+#header .accessibility {
+  text-transform: uppercase;
+  font-size: 12px;
+}
+#header .header-main .designation,
+#header .header-main .subordination {
+  font-size: 14px;
+}
+#header .header-main .site-name {
+  font-weight: 700;
+  font-size: 40px;
+}
+#header .search-form i {
+  font-size: 18px;
+}
+#page-header .block-menu .menu ,
+#page-header .block-menu .block-title {
+  font-size: 14px;
+}
+.navbar-toggle .icon-bar + .icon-bar {
+  margin-top: 3px;
+}
+.region-sidebar-first .block-title {
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: bold;
+}
+.region-sidebar-first .dropdown-menu {
+  font-size: inherit;
+}
+#navbar .menu .secondary {
+  font-size: 12px;
+}
+#footer {
+  font-size: 13px;
+}
+#footer .footer-column .block-title {
+  font-weight: bold;
+  font-size: 18px;
+}
+@media (max-width: 768px) {
+  .header-top .shortcuts {
+    display: none;
+  }
+  #header .header-top .accessibility {
+    font-size: 11px;
+  }
+  #header .header-main .site-info .site-name {
+    font-size: 32px;
+  }
+  .region-sidebar-first .block-title {
+    font-size: 20px;
+  }
+}
+a,
+.social .fa:before,
+.font-govbr:before,
+.shortcuts span {
+  -webkit-transition: all .1s linear;
+  -moz-transition: all .1s linear;
+  -ms-transition: all .1s linear;
+  -o-transition: all .1s linear;
+  transition: all .1s linear;
+}
+.container-br {
+  max-width: 970px !important;
+  margin: 0 auto;
+}
+.block {
+  margin-bottom: 50px;
+}
+.block:last-child {
+  margin-bottom: 0;
+}
+#header a {
+  text-decoration: none;
+}
+#header .logo {
+  margin-right: 10px;
+}
+#header .header-top {
+  margin: 15px 0 30px 0;
+}
+#header .header-top ul {
+  padding: 0;
+  margin: 0;
+}
+#header .header-top ul li {
+  display: inline;
+}
+#header .header-top .shortcuts li {
+  margin-right: 15px;
+}
+#header .header-top .shortcuts li span {
+  padding: 0 3px;
+}
+#header .header-top .accessibility {
+  float: right;
+  border-bottom: 1px dotted;
+  padding-bottom: 2px;
+}
+#header .header-top .accessibility li {
+  margin-left: 15px;
+}
+#header .header-top .accessibility li:first-child {
+  margin: 0;
+}
+#header .header-main .site-info {
+  margin-bottom: 20px;
+}
+#header .header-main .site-info .designation,
+#header .header-main .site-info .subordination {
+  margin: 0;
+}
+#header .header-main .site-info .subordination {
+  text-transform: uppercase;
+}
+#header .header-main .site-info .site-name {
+  margin: 0 0 5px 0;
+}
+#header .search-form .form-control {
+  border-right: 0;
+  box-shadow: none;
+}
+#header .search-form .form-control:focus {
+  background-color: #FFFFE5;
+  box-shadow: none;
+  border-color: #CCC;
+}
+#header .search-form .btn,
+#header .search-form .btn:hover {
+  box-shadow: none;
+  border-left: 0;
+  overflow: hidden;
+  height: 34px;
+}
+#header .search-form .btn:hover {
+  color: #333;
+  background-color: #FFF;
+  border-color: #CCC;
+}
+#header div.social li {
+  padding: 0 1px;
+}
+#header div.social {
+  padding-left: 6px;
+  text-align: right;
+}
+#navbar a {
+  text-decoration: none;
+}
+#navbar .navbar-collapse {
+  margin: 0;
+  padding: 0;
+}
+#navbar .menu .secondary {
+  margin: 0;
+  padding: 8px 0;
+  text-align: right;
+}
+#navbar .menu .secondary li {
+  display: inline;
+  margin: 0 0 0 14px;
+  padding: 0 0 0 15px;
+  border-left: 1px solid;
+}
+#navbar .menu .secondary li:first-child {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+#main {
+  margin-top: 20px;
+  /*margin-bottom: 20px;*/
+}
+li.first .font-govbr {
+  padding-top: 17px !important;
+}
+.font-govbr {
+  text-indent: 40px;
+}
+.font-govbr:hover:before {
+  text-decoration: none;
+}
+.font-govbr:before {
+  font-size: 34px;
+  position: absolute;
+  padding-top: 3px;
+  margin-left: -45px;
+  width: 40px;
+  height: 40px;
+  text-indent: 4px;
+  margin-top: -10px;
+}
+.font-govbr-square:before {
+  border-radius: 4px;
+  color: white !important;
+}
+.nav-tabs > li > a {
+  background-color: transparent;
+}
+#barra-brasil .brasil-flag {
+  height: auto !important;
+}
+.govbr-block .block-title {
+  background-color: #EDEFF1;
+  padding: 8px 8px 24px 10px;
+  margin: 0;
+}
+.govbr-block.blue .block-title {
+  color: #03316f;
+  border-top: 4px solid #03316f;
+}
+.govbr-block.blue .active {
+  border-color: #03316f;
+}
+.govbr-block.green .block-title {
+  color: #00500F;
+  border-top: 4px solid #00500F;
+}
+.govbr-block.green .active {
+  border-color: #00500F;
+}
+.govbr-block.grey .block-title {
+  color: grey;
+  border-top: 4px solid grey;
+}
+.govbr-block.grey .active {
+  border-color: grey;
+}
+html.js fieldset.collapsed {
+  border-left-width: 1px;
+  border-right-width: 1px;
+}
+fieldset.panel.collapsible .caret {
+  float: right;
+  margin-top: 10px;
+}
+fieldset.panel.collapsible.collapsed .caret {
+  border: 4px solid transparent;
+  display: inline-block;
+  opacity: 0.5;
+  vertical-align: top;
+  border-right: 4px solid;
+  margin: 8px 3px;
+}
+@media (max-width: 768px) {
+  .header-top .shortcuts {
+    display: none;
+  }
+  #header .header-top .accessibility {
+    width: 100%;
+    text-align: center;
+  }
+  .navbar-toggle h4,
+  .navbar-toggle > div {
+    margin: 0;
+    display: inline-block;
+  }
+  #sidebar-first-menu {
+    min-height: 57px;
+    border-radius: 4px;
+    margin: 0 15px;
+    padding-bottom: 10px;
+  }
+  .navbar-toggle {
+    padding: 9px 25px;
+    margin-right: -15px;
+  }
+}
+@media (min-width: 830px) and (max-width: 990px) {
+  .container-br {
+    width: 830px;
+  }
+}
+@media (max-width: 990px) {
+  .footer-column {
+    padding-bottom: 15px;
+  }
+}
