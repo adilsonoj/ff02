@@ -6,13 +6,21 @@
 
 
 	
-	<footer class="footer">
-			<div id="footer-brasil"></div>
-	</footer>
+	<footer class="footer">       
+		<div id="footer-brasil">
+			<div id="wrapper-footer-brasil">
+				<a href="http://www.acessoainformacao.gov.br/">
+					<span class="logo-acesso-footer"></span>
+				</a>
+				<a href="http://www.brasil.gov.br/">
+					<span class="logo-brasil-footer"></span>
+				</a>
+			</div>
+		</div>
+    </footer>
 		
 		<!-- GOVBR Rodapé  -->
 		<script type="text/javascript" src="${pluginsPath}/govbr/barra.js"></script>
-		<script type="text/javascript" charset="utf8" src="${jsPath}/custom/relatorios/relatorios.js"></script>
 	
 	</body>
 </html>

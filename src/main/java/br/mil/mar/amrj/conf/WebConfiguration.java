@@ -15,14 +15,15 @@ import org.springframework.web.multipart.support.StandardServletMultipartResolve
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = { "br.mil.mar.amrj.controller" })
-public class WebConfiguration extends WebMvcConfigurationSupport {
+public class WebConfiguration implements WebMvcConfigurer {
 
 	@Bean
 	public InternalResourceViewResolver internalResourceViewResolver() {
@@ -64,10 +65,11 @@ public class WebConfiguration extends WebMvcConfigurationSupport {
 		return new RestTemplate();
 	}
 
-	@Override // liberar acesso ao tomcat acessar a pasta webapp/resource
-	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
-		configurer.enable();
-	}
+	/*
+	 * @Override // liberar acesso ao tomcat acessar a pasta webapp/resource public
+	 * void configureDefaultServletHandling(DefaultServletHandlerConfigurer
+	 * configurer) { configurer.enable(); }
+	 */
 
 	@Bean // Para agrupar todos os viewResolver
 	public ViewResolver contentNegotiationViewResolver(ContentNegotiationManager manager) {
@@ -83,6 +85,12 @@ public class WebConfiguration extends WebMvcConfigurationSupport {
 		return resolver;
 	}
 
+	 @Override
+	    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+	        registry
+	          .addResourceHandler("/resources/**")
+	          .addResourceLocations("/resources/");	
+	    }
 	
 //security
 	/*
