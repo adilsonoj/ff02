@@ -18,19 +18,32 @@
 			<artifactId>spring-orm</artifactId>
 			<version>5.2.8.RELEASE</version>
 		</dependency>
-
+		<dependency>
+		    <groupId>org.apache.tomcat</groupId>
+		    <artifactId>tomcat-servlet-api</artifactId>
+		    <version>9.0.37</version>
+		</dependency>
 		<!-- JSTL Dependency -->
 		<dependency>
-			<groupId>jstl</groupId>
-			<artifactId>jstl</artifactId>
-			<version>1.2</version>
+			<groupId>javax.servlet.jsp.jstl</groupId>
+			<artifactId>javax.servlet.jsp.jstl-api</artifactId>
+			<version>1.2.2</version>
 		</dependency>
-
-		<!-- Servlet Dependency -->
 		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<version>4.0.1</version>
+			<groupId>taglibs</groupId>
+			<artifactId>standard</artifactId>
+			<version>1.1.2</version>
+		</dependency>
+		<!-- Servlet Dependency -->
+		
+
+		<!-- JSP Dependency -->
+		
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>javax.servlet.jsp-api</artifactId>
+			<version>2.3.3</version>
+			<scope>provided</scope>
 		</dependency>
 
 		<!-- JSP Dependency -->
@@ -38,6 +51,7 @@
 			<groupId>javax.servlet.jsp</groupId>
 			<artifactId>javax.servlet.jsp-api</artifactId>
 			<version>2.3.3</version>
+			<scope>provided</scope>
 		</dependency>
 
 		<!--JSON Bind -->
