@@ -11,7 +11,7 @@ public class UnidadesConsumoController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String manterUc() {
 		
-		return "cadastroUC/manterUnidadesConsumo";
+		return "cadastroUC/index";
 	}
 
 }
