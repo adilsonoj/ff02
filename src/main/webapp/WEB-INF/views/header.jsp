@@ -19,6 +19,8 @@
 		<link rel="stylesheet" type="text/css" href="${cssPath}/govbr_white_style.css">
 
 		<link rel="stylesheet" type="text/css" href="${pluginsPath}/govbr/govbr_footer.css">
+		
+		
 
 		<link rel="stylesheet" type="text/css" href="${cssPath}/bootstrap.css">
 		<link rel="stylesheet" type="text/css" href="${cssPath}/bootstrap-theme.css">
@@ -51,7 +53,7 @@
 		<script type="text/javascript" charset="utf8" src="${jsPath}/dataTables.select.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="${cssPath}/select.dataTables.min.css">
 
-
+		<link rel="stylesheet" type="text/css" href="${cssPath}/custom.css">
 		<script type="text/javascript" src="${jsPath}/jsreport.js"></script>
 		<script>jsreport.serverUrl = `http://\${window.location.hostname}:8488`</script> 			   
 
