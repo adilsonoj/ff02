@@ -13,20 +13,15 @@
 		<c:url value="/resources/img" var="imgPath" />
 		<c:url value="/resources/plugins" var="pluginsPath" />
 	
-		<script type="text/javascript" src="${jsPath}/datatable_bootstrap3/jquery-3.3.1.js"></script>
+		<script type="text/javascript" src="${jsPath}/jquery-3.5.1.js"></script>
 		
 		<link rel="stylesheet" type="text/css" href="${cssPath}/govbr_style.css">
 		<link rel="stylesheet" type="text/css" href="${cssPath}/govbr_white_style.css">
 
 		<link rel="stylesheet" type="text/css" href="${pluginsPath}/govbr/govbr_footer.css">
 		
-		
-
-		<link rel="stylesheet" type="text/css" href="${cssPath}/bootstrap.css">
-		<link rel="stylesheet" type="text/css" href="${cssPath}/bootstrap-theme.css">
-		
-		<script type="text/javascript" src="${jsPath}/bootstrap.js"></script>
-		<script type="text/javascript" src="${jsPath}/bootstrap-dropdownhover.js"></script> 
+		<%-- <script type="text/javascript" src="${jsPath}/bootstrap.js"></script>
+		<script type="text/javascript" src="${jsPath}/bootstrap-dropdownhover.js"></script>  --%>
 		
 		<script type="text/javascript" src="${jsPath}/axios.js"></script> 
 		
@@ -36,24 +31,27 @@
 		
 		<script type="text/javascript" src="${jsPath}/moment.js"></script> 
 		
-		<link rel="stylesheet" type="text/css" href="${cssPath}/fontawesome-free-5.3.1-web/all.min.css">
+		<link rel="stylesheet" type="text/css" href="${cssPath}/fontawesome/fontawesome-all.css">
 	
 		<script src="${jsPath}/sweetalert2.js"></script>
 		<link rel="stylesheet" type="text/css" href="${cssPath}/sweetalert2.css">
 		
 		
-		<script type="text/javascript" charset="utf8" src="${jsPath}/jquery.dataTables.min.js"></script>
-		<script type="text/javascript" charset="utf8" src="${jsPath}/dataTables.bootstrap.min.js" ></script>
-		<link rel="stylesheet" type="text/css" href="${cssPath}/dataTables.bootstrap.min.css">
+		<script type="text/javascript" charset="utf8" src="${jsPath}/dataTable4/jquery.dataTables.min.js"></script>
+		<script type="text/javascript" charset="utf8" src="${jsPath}/dataTable4/dataTables.bootstrap4.min.js" ></script>
+		<link rel="stylesheet" type="text/css" href="${cssPath}/datatable/dataTables.bootstrap4.min.css">
 		
  		
-		<script    src="${jsPath}/dataTables.fixedColumns.min.js" ></script> 
-		<link rel="stylesheet" type="text/css" href="${cssPath}/fixedColumns.dataTables.min.css">
+		<%-- <script    src="${jsPath}/dataTables.fixedColumns.min.js" ></script> 
+		<link rel="stylesheet" type="text/css" href="${cssPath}/fixedColumns.dataTables.min.css"> --%>
 		
-		<script type="text/javascript" charset="utf8" src="${jsPath}/dataTables.select.min.js"></script>
-		<link rel="stylesheet" type="text/css" href="${cssPath}/select.dataTables.min.css">
+	<%-- 	<script type="text/javascript" charset="utf8" src="${jsPath}/dataTables.select.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="${cssPath}/select.dataTables.min.css"> --%>
 
 		<link rel="stylesheet" type="text/css" href="${cssPath}/custom.css">
+		
+		<link rel="stylesheet" type="text/css" href="${cssPath}/datatable/bootstrap.css">
+		<script type="text/javascript" src="${jsPath}/bootstrap.bundle.js"></script>
 		<script type="text/javascript" src="${jsPath}/jsreport.js"></script>
 		<script>jsreport.serverUrl = `http://\${window.location.hostname}:8488`</script> 			   
 

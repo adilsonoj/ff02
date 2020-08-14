@@ -18,13 +18,65 @@ body {
 .footer {
   position: absolute;
   bottom: 0;
-  width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 77px;
-  /*background-color: #f5f5f5;*/
+  width: 100%;  
+  height: 77px; /* Set the fixed height of the footer here */
+  line-height: 77px; /* Vertically center the text there */
 }
-
+#wrapper-footer-brasil .logo-brasil-footer {width:140px !important;}
+/* =Header -------------------------------------------------------------- */
+#header .header-top {margin: 10px 0 5px;}
+/*#header .container .header-top, .header-main {
+	font-family: Open Sans;
+}*/
+#wrapper-barra-brasil, .container-br {
+    max-width: 1140px !important;
+}
+#header .logo img {
+	height: 120px;
+	width: 95px;
+}
+#header .site-info {
+	margin-bottom: 5px !important;
+}
+#header.smaller .site-info {
+	margin-bottom: 10px;
+}
+#header.smaller .logo img {
+	height: 50px;
+	width: 39px;
+	margin-top: 5px;
+}
+#header.smaller .header-main {
+	margin-top: 5px;
+}
+#header.smaller h1.site-name {
+	margin-top: 5px !important;
+	font-size: 30px;
+    font-weight: 700;
+	/*color: #337ab7;*/
+}
 /* =Miscelaneous -------------------------------------------------------------- */
+main#main /*.container-fluid, .modal-content*/  > * {
+	font-size:0.9em !important;
+}
+.container-fluid h6 {
+	font-size:0.9em !important;
+}
+.container-fluid h5 {
+	font-size:1.0em !important;
+}
+.container-fluid h4 {
+	font-size:1.1em !important;
+}
+.container-fluid h3 {
+	font-size:1.2em !important;
+}
+.container-fluid h2 {
+	font-size:1.3em !important;
+}
+.container-fluid h1 {
+	font-size:1.4em !important;
+}
 textarea {
 	resize:none;
 }
@@ -34,77 +86,17 @@ textarea {
     padding-bottom: 9px;
 }
 hr {margin: 10px;}
-.breadcrumb {margin-bottom: -10px;}
+.modal-body {
+	padding-top: 0px;
+}
+.DTFC_RightBodyLiner {
+	overflow-y: hidden !important;
+}
+.form-padding-fix {padding:6px;}
+.fade-enter-active, .fade-leave-active {transition: opacity .5s}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {opacity: 0}
 .swal2-confirm {margin-right:50px;}
 .swal2-cancel {margin-left:50px;}
-
-<!------------->
-<!-- EXCLUIR -->
-<!------------->
-/* =Header -------------------------------------------------------------- */
-#header {
-	background-color: #eee;
-	height: 252px;
-	width: 100%;
-}
-
-/* Header Sem Busca FIX */
-#header .header-top {margin: 15px 0;}
-.navbar-btn {margin-top: -12px;}
-/* Header Sem Busca FIX */
-
-#header .container .header-top, .header-main {
-	font-family: Open Sans;
-}
-#header .logo img {
-	height: 120px;
-	width: 95px;
-}
-#header nav.navbar {
-	width: 100%;
-}
-#header.smaller {
-	height: 153px;
-}
-#header.smaller .logo img {
-	height: 50px;
-	width: 39px;
-	margin-top: 5px;
-}
-#header.smaller .header-top {
-	display:none;
-}
-#header.smaller .header-main {
-	margin-top:15px;
-}
-#header.smaller span.designation {
-	display:none;
-}
-#header.smaller span.subordination {
-	display:none;
-}
-#header.smaller h1.site-name {
-	font-size: 30px;
-    font-weight: 700;
-}
-#header.smaller nav.navbar {
-}
-/*.navbar-brand {padding: 15px 0 !important;margin:0 !important;}
-.dropdown-menu {min-width:150px;}*/
-
-.dropdown-submenu{position:relative;}
-.dropdown-submenu>.dropdown-menu{top:0;left:100%;margin-top:-6px;margin-left:-1px;-webkit-border-radius:0 6px 6px 6px;-moz-border-radius:0 6px 6px 6px;border-radius:0 6px 6px 6px;}
-.dropdown-submenu:hover>.dropdown-menu{display:block;}
-.dropdown-submenu>a:after{display:block;content:" ";float:right;width:0;height:0;border-color:transparent;border-style:solid;border-width:5px 0 5px 5px;border-left-color:#cccccc;margin-top:5px;margin-right:-10px;}
-.dropdown-submenu:hover>a:after{border-left-color:#ffffff;}
-.dropdown-submenu.pull-left{float:none;}
-.dropdown-submenu.pull-left>.dropdown-menu{left:-100%;margin-left:10px;-webkit-border-radius:6px 0 6px 6px;-moz-border-radius:6px 0 6px 6px;border-radius:6px 0 6px 6px;}
-
-
-
-.dataTables_filter{
-	text-align: right;
-}
 
 .loader-min {
   border: 6px solid #f3f3f3; /* Light grey */

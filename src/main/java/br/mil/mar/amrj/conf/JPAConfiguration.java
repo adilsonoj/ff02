@@ -58,7 +58,7 @@ public class JPAConfiguration {
         props.setProperty("hibernate.show_sql", "true");
         props.setProperty("hibernate.format_sql", "true");
         props.setProperty("hibernate.default_schema", "AMDBA");
-        props.setProperty("hibernate.hbm2ddl.auto", "update");
+        props.setProperty("hibernate.hbm2ddl.auto", "create");
         factoryBean.setJpaProperties(props);
 
         factoryBean.setPackagesToScan("br.mil.mar.amrj.model");
