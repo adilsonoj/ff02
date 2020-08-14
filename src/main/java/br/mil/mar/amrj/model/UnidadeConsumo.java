@@ -14,16 +14,15 @@ import javax.persistence.Table;
 public class UnidadeConsumo {
 	
 	@Id
-	@GeneratedValue
 	@Column(name="CD_UNID_CONS")
 	private Integer cdUnidCons;
 	
-	@Column(name="DE_UNID_CONS", unique=true, nullable=false)
+	@Column(name="DE_UNID_CONS")
 	private String deUnidCons;
 	
 	@ManyToOne
 	@JoinColumn(name="CD_TIPO_UNID_CONS", referencedColumnName="CD_TIPO_UNID_CONS")
-	private TipoUnidConsumo tipoUnidConsumo;
+	private TipoUnidadeConsumo tipoUnidConsumo;
 	
 	@ManyToOne
 	@JoinColumn(name="ID_CLIE_CAP", referencedColumnName="ID_CLIE_CAP")
@@ -45,11 +44,11 @@ public class UnidadeConsumo {
 		this.deUnidCons = deUnidCons;
 	}
 
-	public TipoUnidConsumo getTipoUnidConsumo() {
+	public TipoUnidadeConsumo getTipoUnidConsumo() {
 		return tipoUnidConsumo;
 	}
 
-	public void setTipoUnidConsumo(TipoUnidConsumo tipoUnidConsumo) {
+	public void setTipoUnidConsumo(TipoUnidadeConsumo tipoUnidConsumo) {
 		this.tipoUnidConsumo = tipoUnidConsumo;
 	}
 

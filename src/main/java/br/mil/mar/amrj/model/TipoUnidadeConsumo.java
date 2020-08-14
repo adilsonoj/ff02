@@ -9,10 +9,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="FFVU_TIPO_UNID_CONS")
-public class TipoUnidConsumo {
+public class TipoUnidadeConsumo {
 
 	@Id
-	@GeneratedValue
 	@Column(name="CD_TIPO_UNID_CONS")
 	private Integer cdTipoUnidCons;
 	
