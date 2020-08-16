@@ -22,7 +22,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = { "br.mil.mar.amrj.controller" })
+@ComponentScan(basePackages = { "br.mil.mar.amrj.controller", "br.mil.mar.amrj.service", "br.mil.mar.amrj.dao" })
 public class WebConfiguration implements WebMvcConfigurer {
 
 	@Bean
