@@ -3,7 +3,7 @@ var app = new Vue({
   data: {
 	  host: window.location,
 	  tipoUc:'',
-	  clientes:['AMRJ','CMS', 'DIM' ],
+	  clientes:'',
 	  deUnidCons:'',
 	  idClieCap:'',
 	  cdTipoUnidCons:''
@@ -18,7 +18,7 @@ var app = new Vue({
 	  listargetIncluir(){
 		  axios.get("listar").then(resp => {
 			  this.tipoUc = resp.data.tipoUC
-			  console.log(this.tipoUc)
+			  this.clientes =  resp.data.cliente
 		  })
 			 
 	  },
@@ -28,40 +28,46 @@ var app = new Vue({
 //			   deUnidCons:this.deUnidCons,
 //			   idClieCap:this.idClieCap,
 //			   cdTipoUnidCons:this.cdTipoUnidCons
-//		   },
-//			  (data, success) =>{ }).then( data => {})
-			  
+//		   }, (data, success) =>{ 
+//				  console.log(data)
+//			  })
+////	 
+//		
+		  
+		 
 			  swal({
-					title: 'Tem certeza?',
+				  	title: 'Tem certeza?',
 					text: 'Confirme os dados antes da inclusão!',
 					type: 'warning',
 					showCancelButton: true,
-					confirmButtonColor: '#3085d6',
-					cancelButtonColor: '#d33',
+					/*confirmButtonColor: '#3085d6',
+					cancelButtonColor: '#d33',*/
 					confirmButtonText: 'Sim, inclua!',
 					cancelButtonText: 'Não, cancele!',
 					confirmButtonClass: 'btn btn-outline-success',
 					cancelButtonClass: 'btn btn-outline-danger',
 					buttonsStyling: false
-				}).then(function () {
-					$('#incluir').modal('hide')
-					swal(
-					'Salvo!',
-					'A inclusão foi realizada com sucesso!',
-					'success'
-					)
-				}, function (dismiss) {
-					// dismiss can be 'cancel', 'overlay',
-					// 'close', and 'timer'
-					if (dismiss === 'Não, cancele!') {
-						swal(
-							'Cancelado',
-							'Nenhuma inclusão foi realizada.',
-							'error'
-						)
-					}
-				})
-			//};
-	  }
+			}).then((result) => {
+				 $.post("salvar", { 
+					   deUnidCons:this.deUnidCons,
+					   idClieCap:this.idClieCap,
+					   cdTipoUnidCons:this.cdTipoUnidCons
+				   }, (data, success) =>{ 
+						  console.log(data)
+				 if (data) {
+				 swal('Salvo!','A inclusão foi realizada com sucesso!','success')
+					 $('#incluir').modal('hide')
+			 	}else{
+			 		swal('Cancelado','Nenhuma inclusão foi realizada.','error')
+			 		 $('#incluir').modal('hide')
+			 	}
+		  })
+			  
+	})
+		
+	  
+	  
+	  
+	  }	//fim do incluir	
   }
 })

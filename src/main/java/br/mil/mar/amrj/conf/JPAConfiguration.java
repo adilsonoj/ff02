@@ -42,17 +42,17 @@ public class JPAConfiguration {
 //        dataSource.setPassword("usdspc01");
 //        dataSource.setUrl("jdbc:oracle:thin:@10.1.32.50:1521:amrjdsv");
         
-//        dataSource.setUsername("AMDBA");
-//        dataSource.setPassword("adminsystem"); // modifique para a senha do seu banco
-//        dataSource.setUrl("jdbc:oracle:thin:@localhost:1521:xe");
-//        dataSource.setDriverClassName("oracle.jdbc.OracleDriver");
-//        factoryBean.setDataSource(dataSource);
+        dataSource.setUsername("AMDBA");
+        dataSource.setPassword("adminsystem"); // modifique para a senha do seu banco
+        dataSource.setUrl("jdbc:oracle:thin:@localhost:1521:xe");
+        dataSource.setDriverClassName("oracle.jdbc.OracleDriver");
+        factoryBean.setDataSource(dataSource);
         
-        	dataSource.setUsername("usdsff1u"); 
-        	dataSource.setPassword("usdsff1u");
-        	dataSource.setUrl("jdbc:oracle:thin:@10.1.32.50:1521:amrjdsv");
-        	dataSource.setDriverClassName("oracle.jdbc.OracleDriver");
-        	factoryBean.setDataSource(dataSource);
+//        	dataSource.setUsername("usdsff1u"); 
+//        	dataSource.setPassword("usdsff1u");
+//        	dataSource.setUrl("jdbc:oracle:thin:@10.1.32.50:1521:amrjdsv");
+//        	dataSource.setDriverClassName("oracle.jdbc.OracleDriver");
+//        	factoryBean.setDataSource(dataSource);
         
         Properties props = new Properties();
         props.setProperty("hibernate.dialect", "org.hibernate.dialect.Oracle10gDialect");

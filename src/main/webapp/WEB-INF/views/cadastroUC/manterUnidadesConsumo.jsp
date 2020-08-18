@@ -90,7 +90,7 @@
                                     <label class="input-group-text" for="inputGroupSelect01">Tipo</label>
                                   </div>
                                   <select class="custom-select" v-model="cdTipoUnidCons"  id="inputGroupSelect01">
-                                    <option selected>Selecione...</option>
+                                    <option value='' selected>Selecione...</option>
                                     <option v-for="tipo in tipoUc" v-bind:value="tipo.cdTipoUnidCons">{{tipo.deTipoUnidCons}}</option>
                                     
                                   </select>
@@ -112,8 +112,8 @@
                                     <label class="input-group-text" for="inputGroupSelect01">Cliente</label>
                                   </div>
                                   <select class="custom-select"  v-model="idClieCap" id="inputGroupSelect01">
-                                    <option selected>Selecione...</option>
-                                    <option v-for="cliente in clientes" v-bind:value="cliente">{{cliente}}</option>
+                                    <option value='' selected>Selecione...</option>
+                                    <option v-for="cliente in clientes" v-bind:value="cliente.idClieCap">{{cliente.deClieCap}}</option>
                                   </select>
                                 </div>
                             </div>
@@ -460,7 +460,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-sm btn-secondary" onClick="editar()">Salvar</button>
+                    <button type="button" onClick="editar()"  class="btn btn-sm btn-secondary" >Salvar</button>
                 </div>
             </div>
             <!-- /.modal-content --> 

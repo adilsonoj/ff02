@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import br.mil.mar.amrj.model.UnidadeConsumo;
+import br.mil.mar.amrj.service.ClienteService;
 import br.mil.mar.amrj.service.TipoUnidadeConsumoService;
 import br.mil.mar.amrj.service.UnidadeConsumoService;
 
@@ -22,11 +22,14 @@ public class UnidadesConsumoController {
 	TipoUnidadeConsumoService tipoUcService;
 	
 	@Autowired
+	ClienteService clienteService;
+	
+	@Autowired
 	UnidadeConsumoService ucService;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String manterUc(Model model) {
-		model.addAllAttributes(tipoUcService.buscar());
+	public String manterUc() {
+//		model.addAllAttributes(tipoUcService.buscar());
 		return "cadastroUC/manterUnidadesConsumo";
 	}
 	
@@ -35,14 +38,23 @@ public class UnidadesConsumoController {
 	public Map<String, Object> listaParamentros() {
 		Map<String, Object> map = new HashMap<>();
 		map.put("tipoUC",tipoUcService.buscar());
-		//map.put("cliente", tipoUcService.buscar());
+		map.put("cliente", clienteService.buscar());
 	return map;
 	}
 	
 	@RequestMapping(value = "/salvar", method = RequestMethod.POST)
-	public void salvar(String deUnidCons, String idClieCap, Integer cdTipoUnidCons) {
-System.out.println("salvando");
-		//ucService.salvar(deUnidCons, idClieCap, cdTipoUnidCons );
+	@ResponseBody
+	public boolean salvar(String deUnidCons, String idClieCap, Integer cdTipoUnidCons) {
+		System.out.println("salvando");
+		Boolean salvo = false;
+		if(deUnidCons != null || idClieCap != null || cdTipoUnidCons != null){
+			//ucService.salvar(deUnidCons, idClieCap, cdTipoUnidCons );
+			salvo = true;
+			return salvo;
+		}
+		
+		return  salvo;
+		
 		
 	}
 

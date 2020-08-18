@@ -30,7 +30,7 @@ public class UnidadeConsumoService {
 			uc.setCliente(cliente);
 			uc.setTipoUnidConsumo(tipoUnidConsumo);
 			uc.setDeUnidCons(deUnidCons);
-		
+		uc.setCdUnidCons(2);
 		ucDao.salvar(uc);
 	}
 }
