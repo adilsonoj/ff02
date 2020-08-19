@@ -9,11 +9,18 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
+
 @Entity
+@GenericGenerator(name = "FFSQ207", strategy = "sequence", parameters = {
+		@Parameter(name = "sequence", value = "FFSQ207") })
 @Table(name="FFVU_UNID_CONS")
 public class UnidadeConsumo {
 	
+	
 	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="FFSQ207")
 	@Column(name="CD_UNID_CONS")
 	private Integer cdUnidCons;
 	

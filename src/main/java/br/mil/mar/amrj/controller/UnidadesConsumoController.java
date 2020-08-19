@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import br.mil.mar.amrj.model.UnidadeConsumo;
 import br.mil.mar.amrj.service.ClienteService;
 import br.mil.mar.amrj.service.TipoUnidadeConsumoService;
 import br.mil.mar.amrj.service.UnidadeConsumoService;
@@ -44,17 +45,11 @@ public class UnidadesConsumoController {
 	
 	@RequestMapping(value = "/salvar", method = RequestMethod.POST)
 	@ResponseBody
-	public boolean salvar(String deUnidCons, String idClieCap, Integer cdTipoUnidCons) {
+	public boolean salvar(UnidadeConsumo uc) {
 		System.out.println("salvando");
-		Boolean salvo = false;
-		if(deUnidCons != null || idClieCap != null || cdTipoUnidCons != null){
-			//ucService.salvar(deUnidCons, idClieCap, cdTipoUnidCons );
-			salvo = true;
-			return salvo;
-		}
+		System.out.println(uc.toString());
 		
-		return  salvo;
-		
+		return ucService.salvar(uc);
 		
 	}
 

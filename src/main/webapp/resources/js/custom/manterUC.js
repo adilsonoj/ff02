@@ -8,6 +8,7 @@ var app = new Vue({
 	  idClieCap:'',
 	  cdTipoUnidCons:''
 	  
+	  
 
   },
   mounted: function(){
@@ -48,26 +49,26 @@ var app = new Vue({
 					cancelButtonClass: 'btn btn-outline-danger',
 					buttonsStyling: false
 			}).then((result) => {
-				 $.post("salvar", { 
-					   deUnidCons:this.deUnidCons,
-					   idClieCap:this.idClieCap,
-					   cdTipoUnidCons:this.cdTipoUnidCons
-				   }, (data, success) =>{ 
-						  console.log(data)
-				 if (data) {
-				 swal('Salvo!','A inclusão foi realizada com sucesso!','success')
-					 $('#incluir').modal('hide')
-			 	}else{
-			 		swal('Cancelado','Nenhuma inclusão foi realizada.','error')
-			 		 $('#incluir').modal('hide')
-			 	}
-		  })
-			  
-	})
-		
-	  
-	  
-	  
-	  }	//fim do incluir	
+				  let unidcons = new FormData()
+				  unidcons.append('deUnidCons', this.deUnidCons)
+				  unidcons.append('tipoUnidConsumo.cdTipoUnidCons', this.cdTipoUnidCons)
+				  unidcons.append('cliente.idClieCap', this.idClieCap.toString())			
+			 
+			      axios.post('salvar', unidcons)
+			      
+			     })							//fim do then
+			     .then((result) => {
+			    	if (result == true) {
+			    	 swal('Salvo!','A inclusão foi realizada com sucesso!','success')
+			    		 $('#incluir').modal('hide')
+			    	}else{
+			    		swal('Cancelado','Nenhuma inclusão foi realizada.','error')
+			    		 $('#incluir').modal('hide')
+			    	}
+			    	 
+	  })
+											
+	 }	//fim do incluir	
   }
 })
+

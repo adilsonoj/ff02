@@ -19,18 +19,14 @@ public class UnidadeConsumoService {
 	UnidadeConsumoDao ucDao;
 	
 	@Transactional
-	public void salvar(String deUnidCons, String idClieCap, Integer cdTipoUnidCons) {
-		Cliente cliente = new Cliente();
-		cliente.setIdClieCap(idClieCap);
-		
-		TipoUnidadeConsumo tipoUnidConsumo = new TipoUnidadeConsumo();
-		tipoUnidConsumo.setCdTipoUnidCons(cdTipoUnidCons);
-		
-		UnidadeConsumo uc = new UnidadeConsumo();
-			uc.setCliente(cliente);
-			uc.setTipoUnidConsumo(tipoUnidConsumo);
-			uc.setDeUnidCons(deUnidCons);
-		uc.setCdUnidCons(2);
-		ucDao.salvar(uc);
-	}
+	public boolean  salvar(UnidadeConsumo uc) {
+		boolean salvo = false;
+		try {
+			//ucDao.salvar(uc);
+			salvo = true;
+		}catch (Exception e) {
+			salvo = false;
+		}
+		return salvo;
+	}	
 }
