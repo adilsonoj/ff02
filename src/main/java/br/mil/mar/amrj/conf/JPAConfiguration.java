@@ -38,15 +38,6 @@ public class JPAConfiguration {
 		 * dataSource.setUrl("jdbc:oracle:thin:@10.1.32.14:1521:amrj");
 		 */
         
-//        dataSource.setUsername("usdspc1u"); 
-//        dataSource.setPassword("usdspc01");
-//        dataSource.setUrl("jdbc:oracle:thin:@10.1.32.50:1521:amrjdsv");
-        
-//        dataSource.setUsername("AMDBA");
-//        dataSource.setPassword("adminsystem"); // modifique para a senha do seu banco
-//        dataSource.setUrl("jdbc:oracle:thin:@localhost:1521:xe");
-//        dataSource.setDriverClassName("oracle.jdbc.OracleDriver");
-//        factoryBean.setDataSource(dataSource);
         
         	dataSource.setUsername("usdsff1u"); 
         	dataSource.setPassword("usdsff1u");
