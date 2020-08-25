@@ -10,7 +10,7 @@ import javax.persistence.Table;
 public class Cliente {
 	
 	@Id
-	@Column(name="ID_CLIE_CAP")
+	
 	private String idClieCap;
 	
 	@Column(name="DE_CLIE_CAP")
