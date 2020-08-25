@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"   pageEncoding="UTF-8"%>
 <jsp:include page="../header.jsp"></jsp:include>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<div id="app">
 <main id="main" role="main">
   <div class="container-fluid">
     
@@ -38,7 +40,7 @@
                       <th class="col-md-1 text-center">&nbsp;</th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody  v-for="fatura of faturas" :key="fatura.cdFatr">
                     <!--linha 1-->
                     <tr bgcolor="#f8f9fa">
                       <td class="align-middle text-center" rowspan="3"><a href="#" data-toggle="modal" data-target="#mesano">00/0000</a></td>
@@ -61,35 +63,11 @@
                       <td class="text-right align-middle">R$ 000.000,00</td>
                       <td class="text-right align-middle">R$ 000.000,00</td>
                     </tr>
-                    <!--linha 2-->
-                   	<tr>
-                      <td class="align-middle text-center" rowspan="3"><a href="#" data-toggle="modal" data-target="#mesano">00/0000</a></td>
-                    </tr>
-                    <tr>
-                      <td class="text-center align-middle"><a href="#" data-toggle="modal" data-target="#consumo">Consumo</a></td>
-                      <td class="text-right align-middle">R$ 000.000,00</td>
-                      <td class="text-right align-middle">R$ 000.000,00</td>
-                      <td class="text-right align-middle">R$ 000.000,00</td>
-                      <td class="text-right align-middle">R$ 000.000,00</td>
-                      <td class="text-right align-middle" rowspan="2"><a href="#" data-toggle="modal" data-target="#encargos">R$ 000.000,00</a></td>
-                      <td class="text-right align-middle" rowspan="3">R$ 000.000,00</td>
-                      <td class="text-center align-middle d-flex justify-content-center">
-	                      <span data-toggle="tooltip" data-container="body" data-placement="top" title="" role="tooltip" data-original-title="Excluir">
-		                      <button type="button" data-href="#" class="btn btn-danger btn-sm btn-toolbar" onclick="excluir()"> 
-		                      	<i class="far fa-trash-alt"></i>
-		                      </button>
-						  </span>
-					  </td>
-                    </tr>
-                    <tr>
-                      <td class="text-center align-middle"><a href="#" data-toggle="modal" data-target="#demanda">Demanda</a></td>
-                      <td class="text-right align-middle">R$ 000.000,00</td>
-                      <td class="text-right align-middle">R$ 000.000,00</td>
-                      <td class="text-right align-middle">R$ 000.000,00</td>
-                      <td class="text-right align-middle">R$ 000.000,00</td>
-                    </tr>
                   </tbody>
                 </table>
+                <div v-for="fatura of faturas" :key="fatura.cdFatr">
+                {{fatura.cdFatr}}
+                </div>
 			</div>
 			<div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1 offset-5">
                 <div  class="dataTables_paginate paging_full_numbers">
@@ -109,7 +87,7 @@
 
 <!-- MODAIS -->
 <!-- modal INCLUIR -->
-    <form novalidate role="form">
+    <form  role="form" @submit.prevent="inclui">
         <div id="incluir" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="incluirLabel" aria-hidden="true">
             <div class="modal-dialog"  role="document">
                 <div class="modal-content">
@@ -126,43 +104,36 @@
                     <div class="modal-body">
                     	<ul class="nav nav-tabs">
                           <li class="nav-item">
-                            <a class="nav-link active" href="#mesanoTab">MÃªs / Ano</a>
+                            <a class="nav-link active" @click="aba = 'mesanoTab'">MÃªs / Ano</a>
                           </li>
                           <li class="nav-item">
-                            <a class="nav-link" href="#consumoTab">Consumo</a>
+                            <a class="nav-link" v-on:click="aba = 'consumoTab'">Consumo</a>
                           </li>
                           <li class="nav-item">
-                            <a class="nav-link" href="#demandaTab">Demanda</a>
+                            <a class="nav-link" v-on:click="aba = 'demandaTab'">Demanda</a>
                           </li>
                           <li class="nav-item">
-                            <a class="nav-link" href="#encargosTab">Encargos</a>
+                            <a class="nav-link" v-on:click="aba = 'encargosTab'">Encargos</a>
                           </li>
                         </ul>
                         <!-- mes / ano -->
-                        <div id="mesanoTab">
+                        <div id="mesanoTab" v-show="aba == 'mesanoTab'">
                             <div class="form-row mt-3">
-                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend"> <span class="input-group-text">MÃªs / Ano</span> </div>
-                                            <input type="text" class="form-control text-center" placeholder="00/0000"/>
-                                        </div>
-                                    </div>
-                                </div>
+                                
                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                     <div class="form-group">
                                         <div class="input-group">
                                             <div class="input-group-prepend"> <span class="input-group-text">PerÃ­odo</span> </div>
-                                            <input type="text" class="form-control text-center" placeholder="00/0000"/>
+                                            <input type="text" class="form-control text-center" placeholder="00/0000" v-model="dtIni" required/>
                                             <div class="input-group-prepend"> <span class="input-group-text">a</span> </div>
-                                            <input type="text" class="form-control text-center" placeholder="00/0000"/>
+                                            <input type="text" class="form-control text-center" placeholder="00/0000" v-model="dtFim" required/>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <!-- consumo -->
-                       	<div id="consumoTab">
+                       	<div id="consumoTab" v-show="aba == 'consumoTab'">
                             <div class="form-row mt-1">
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
                                     <h5 class="page-header"><strong>Valor</strong></h5>
@@ -207,7 +178,7 @@
                             </div>
                         </div>
                         <!-- demanda -->
-                        <div id="demandaTab">
+                        <div id="demandaTab" v-show="aba == 'demandaTab'">
                             <div class="form-row mt-3">
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
                                     <div class="form-group">
@@ -246,7 +217,7 @@
                             </div>
                         </div>
                         <!-- encargos -->
-                        <div id="encargosTab">
+                        <div id="encargosTab" v-show="aba == 'encargosTab'">
                             <div class="form-row mt-1">
                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                   <table id="tblEncargos2" class="table table-sm table-hover">
@@ -285,7 +256,7 @@
                           </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-sm btn-secondary" onClick="editar()">Salvar</button>
+                        <button type="submit" class="btn btn-sm btn-secondary">Salvar</button>
                     </div>
                 </div>
                 <!-- /.modal-content --> 
@@ -527,4 +498,7 @@
         </div>
       </div>
     </form>
+</div>
+    <c:url value="/resources/js" var="jsPath" />
+    <script type="text/javascript" src="${jsPath}/custom/manterFatura.js"></script>
    <jsp:include page="../footer.jsp"></jsp:include>

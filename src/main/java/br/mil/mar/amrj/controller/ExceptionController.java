@@ -20,10 +20,10 @@ public class ExceptionController extends ResponseEntityExceptionHandler{
     public ResponseEntity<Map<String, String>> ConstraintViolation(Exception ex, WebRequest request){
 		
 		mapError.put("error", "violacao_integridade");
-		mapError.put("cod", HttpStatus.BAD_REQUEST.toString());
+		mapError.put("cod", HttpStatus.CONFLICT.toString());
 		mapError.put("msg", ex.getMessage());
 		
-        return new ResponseEntity<>(mapError, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(mapError, HttpStatus.CONFLICT);
     }
 	
 	@ExceptionHandler(Exception.class)
@@ -33,7 +33,6 @@ public class ExceptionController extends ResponseEntityExceptionHandler{
 		mapError.put("error", "exception");
 		mapError.put("cod", HttpStatus.BAD_REQUEST.toString());
 		mapError.put("msg", ex.getMessage());
-		
         return new ResponseEntity<>(mapError, HttpStatus.BAD_REQUEST);
     }
 	

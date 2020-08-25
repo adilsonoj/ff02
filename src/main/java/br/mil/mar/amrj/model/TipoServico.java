@@ -13,7 +13,7 @@ public class TipoServico {
 	@Column(name="CD_TIPO_SERV")
 	private Integer cdTipoServ;
 	
-	@Column(name="DE_TIPO_SERV")
+	@Column(name="DE_CLAS_FATR")
 	private String deTipoServ;
 
 	public Integer getCdTipoServ() {
