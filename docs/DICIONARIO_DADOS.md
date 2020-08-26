@@ -9,7 +9,7 @@ __Descrição__: Tabela com valor de lançamentos que constam nas diferentes fat
 | CD_LANC | NUMERIC(8) | PK incrementada com sequence FFSQ201 | Chave artificial |
 | CD_FATR_SERV | NUMERIC(8) | FK para a tabela FFVU_FATR_SERV | Determina à qual fatura o lançamento se refere |
 | CD_TIPO_LANC | NUMERIC(8) | FK para a tabela FFVU_TIPO_LANC | Determina o tipo de lançamento, ou seja, o tipo de campo da respectiva fatura ao qual se refere o lançamento |
-| VL_LANC | NMERIC(10, 2) | Descreve o valor monetário do lançamento |
+| VL_LANC | NUMERIC(10, 2) | | Descreve o valor monetário do lançamento |
 
 ## Tabela FFVU_FATR_SERV
 
