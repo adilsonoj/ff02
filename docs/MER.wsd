@@ -7,7 +7,8 @@ package Fatura {
         ---
         CD_LANC: NUMERIC(8) [PK]
         --
-        CD_FATR: NUMERIC(8) [FK]
+        CD_FATR_SERV: NUMERIC(8) [FK]
+        (( ALTERAR NOME DE CD_FATR PARA CD_FATR_SERV ))
         CD_TIPO_LANC: NUMERIC(8) [FK]
         VL_LANC: NUMERIC(10, 2) 
     }
