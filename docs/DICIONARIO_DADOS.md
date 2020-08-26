@@ -64,6 +64,16 @@ __Descrição__: Determina se o consumo medido é de demanda ponta, demanda fora
 
 ## FFVU_MDDA_CONS
 
+__Descrição__: Determina o valor da medida realizada, para se auferir o consumo e se efetuar o rateio entre diferentes Unidades de Consumo (que podem pertencer a diferentes OM's)
+
+| Campo | Tipo | Restrição de Domínio | Descrição |
+| --- | --- | --- | --- |
+| CD_MDDA_CONS | NUMERIC(8) | PK implementada com sequence FFSQ208 | |
+| CD_UNID_CONS | NUMERIC(8) | FK para tabela FFVU_CLIE | |
+| CD_TIPO_CONS | NUMERIC(8) | | |
+| VL_MDDA_CONS | NUMERIC(10, 2) | | Valor da medida do consumo |
+| DT_MDDA_CONS | DATE | | Data na qual o consumo foi levantado |
+
 ## FFVU_UNID_CONS
 
 ## FFVU_TIPO_UNID_CONS
