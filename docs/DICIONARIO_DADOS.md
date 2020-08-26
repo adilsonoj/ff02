@@ -21,6 +21,7 @@ __Descrição__: Tabela com conjunto de faturas gerenciadas pelo sistema
 | CD_MODL_FATR | NUMERIC(8) | FK para a tabela FFVU_MODL_FATR | Modalidade (conjunto de campos) presente na fatura |
 | DT_INIC | DATE | Deve ser menor que DT_FIM  | Data de início da cobrança da fatura |
 | DT_FIM | DATE | Deve ser maior que DT_INIC | Data fim da cobrança da fatura |
+| LG_ATIV | CHAR(1) | "S" ou "N" | Determina se o registro se encontra ativo |
 
 ## Tabela FFVU_MODL_FATR
 
@@ -68,7 +69,7 @@ __Descrição__: Determina o valor da medida realizada, para se auferir o consum
 
 | Campo | Tipo | Restrição de Domínio | Descrição |
 | --- | --- | --- | --- |
-| CD_MDDA_CONS | NUMERIC(8) | PK implementada com sequence FFSQ208 | |
+| CD_MDDA_CONS | NUMERIC(8) | PK implementada com sequence FFSQ202 | Chave  |
 | CD_UNID_CONS | NUMERIC(8) | FK para tabela FFVU_CLIE | |
 | CD_TIPO_CONS | NUMERIC(8) | | |
 | VL_MDDA_CONS | NUMERIC(10, 2) | | Valor da medida do consumo |
@@ -80,12 +81,26 @@ __Descrição__: Entidade que representa os diferentes centros de consumo presen
 
 | Campo | Tipo | Restrição de Domínio | Descrição |
 | --- | --- | --- | --- |
-| CD_UNID_CONS | | | |
-| ID_CLIE_CAP | | | |
-| CD_TIPO_UNID_CONS | | | |
-| DE_UNID_CONS | | | |
-| LG_ATIV | | | |
+| CD_UNID_CONS | NUMERIC(8) | PK implementada com sequence FFSQ208 | |
+| ID_CLIE_CAP | CHAR(5) | FK para tabela FFVU_CLIE | Determina OM responsável pela Unidade de Consumo |
+| CD_TIPO_UNID_CONS | NUMERIC(8) | FK para tabela FFVU_TIPO_UNID_CONS | Determina a classificação da Unidade de Consumo (navio, OM de terra etc.) |
+| DE_UNID_CONS | VARCHAR2(20) | | Descrição da unidade de consumo |
+| LG_ATIV | CHAR(1) | "S" ou "N" | Determina se o registro se encontra ativo |
 
 ## FFVU_TIPO_UNID_CONS
 
-## FFVU_CLIE
+__Descrição:__ Tabela de domínio relativa ao tipo de Unidade de Consumo (O.M de terra, navio etc.)
+
+| Campo | Tipo | Restrição de Domínio | Descrição |
+| --- | --- | --- | --- |
+| CD_TIPO_UNID_CONS | NUMERIC(8) | PK implementada com sequence FFSQ207 | Chave artificial |
+| DE_TIPO_UNID_CONS | VARCHAR2(20) | | Descrição do tipo de unidade de consumo | 
+
+# Tabela Externa do Sistema EE01
+
+## Tabela FFVU_CLIE
+
+__Descrição__: Lista os diferentes "clientes" (OM's) presentes no CNIC
+
+- Checar especificação do respectivo sistema para descrições mais detalhadas
+
