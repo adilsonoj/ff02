@@ -76,6 +76,16 @@ __Descrição__: Determina o valor da medida realizada, para se auferir o consum
 
 ## FFVU_UNID_CONS
 
+__Descrição__: Entidade que representa os diferentes centros de consumo presentes na CNIC. Exemplos: "Edifício 1 do CMS, "Edifício 2 do CMS", "Edifício 11 do AMRJ"etc.
+
+| Campo | Tipo | Restrição de Domínio | Descrição |
+| --- | --- | --- | --- |
+| CD_UNID_CONS | | | |
+| ID_CLIE_CAP | | | |
+| CD_TIPO_UNID_CONS | | | |
+| DE_UNID_CONS | | | |
+| LG_ATIV | | | |
+
 ## FFVU_TIPO_UNID_CONS
 
 ## FFVU_CLIE
