@@ -1,0 +1,137 @@
+@startuml
+
+package Fatura {
+
+    entity FFVU_LANC {
+        SEQUENCE: FFSQ201
+        ---
+        CD_LANC: NUMERIC(8) [PK]
+        --
+        CD_FATR: NUMERIC(8) [FK]
+        CD_TIPO_LANC: NUMERIC(8) [FK]
+        VL_LANC: NUMERIC(10, 2) 
+    }
+
+    entity FFVU_FATR_SERV {
+        SEQUENCE: FFSQ200
+        ---
+        CD_FATR_SERV: NUMERIC(8) [PK]
+        (( ALTERAR NOME DE CD_FATR PARA CD_FATR_SERV ))
+        --
+        CD_MODL_FATR: NUMERIC(8) [FK]
+        DT_INIC: DATE
+        DT_FIM: DATE
+    }
+
+    entity FFVU_MODL_FATR {
+        SEQUENCE: FFSQ203
+        ---
+        CD_MODL_FATR: NUMERIC(8) [PK]
+        --
+        CD_TIPO_SERV: NUMERIC(8) [PK]
+        CD_TIPO_LANC: NUMERIC(8)
+        DE_TIPO_FATR: VARCHAR(20)
+    }
+
+    entity FFVU_TIPO_LANC {
+        SEQUENCE: FFSQ205
+        ---
+        CD_TIPO_LANC: NUMERIC(8) [PK]
+        --
+        DE_TIPO_LANC: VARCHAR (20)
+    }
+
+    entity FFVU_TIPO_SERV {
+        SEQUENCE: FFSQ206
+        ---
+        CD_TIPO_SERV: NUMERIC(8) [PK]
+        --
+        DE_TIPO_SERV VARCHAR(20)
+        (( ALTERAR NOME DE DE_CLAS_FATR PARA DE_TIPO_SERV ))
+    }
+
+}
+
+package Consumo {
+
+    entity FFVU_TIPO_CONS {
+        SEQUENCE: FFSQ204
+        ---
+        CD_TIPO_CONS: NUMERIC(8) [PK]
+        --
+        CD_TIPO_SERV: NUMERIC(8) [FK]
+        DE_TIPO_CONS: VARCHAR(20)
+    }
+
+    entity FFVU_MDDA_CONS  {
+        SEQUENCE: FFSQ202
+        ---
+        CD_MDDA_CONS: NUMERIC(8) [PK]
+        ---
+        CD_UNID_CONS: NUMERIC(8) [FK]
+        CD_TIPO_CONS: NUMERIC(8) [FK]
+        VL_MDDA_CONS: NUMERIC(8)
+        DT_MDDA_CONS: DATE
+    }
+
+    entity FFVU_UNID_CONS {
+        SEQUENCE: FFSQ208
+        ---
+        CD_UNID_CONS: NUMERIC(8) [PK]
+        ---
+        ID_CLIE_CAP: CHAR(5) [FK]
+        CD_TIPO_UNID_CONS: NUMERIC(8) [FK]
+        DE_UNID_CONS: VARCHAR(20)
+        LG_ATIV: CHAR(1)
+    }
+
+    entity FFVU_TIPO_UNID_CONS {
+        SEQUENCE: FFSQ207
+        ---
+        CD_TIPO_UNID_CONS: NUMERIC(8) [PK]
+        ---
+        DE_TIPO_UNID_CONS: VARCHAR(2)
+    }
+
+}
+
+package EE01{
+
+    entity FFVU_CLIE {
+        (( TABELA EXTERNA ))
+        ---
+        ID_CLIE_CAP CHAR(5) [PK]
+        --
+        CD_INDA_VISU CHAR(5)
+        LG_CLIE_ATIVO CHAR(1)
+        ID_CLIE_PRIM_CLAS CHAR(5)
+        CD_ABRV_OM VARCHAR2(20)
+        DE_CLIE_CAP VARCHAR2(60)
+    }
+
+}
+
+package Rateio{
+
+}
+
+package PC01{
+
+    entity PESS{
+    }
+    
+}
+
+'RELACIONAMENTOS
+
+FFVU_LANC }o--|| FFVU_FATR_SERV
+FFVU_LANC }o--|| FFVU_TIPO_LANC
+FFVU_FATR_SERV }o--|| FFVU_MODL_FATR
+FFVU_MODL_FATR }o--|| FFVU_TIPO_SERV
+FFVU_TIPO_SERV ||--o{ FFVU_TIPO_CONS
+FFVU_TIPO_CONS ||--o{ FFVU_MDDA_CONS
+FFVU_MDDA_CONS }o--|| FFVU_UNID_CONS
+FFVU_UNID_CONS }o--|| FFVU_TIPO_UNID_CONS
+FFVU_UNID_CONS }o--|| FFVU_CLIE
+
+@enduml
