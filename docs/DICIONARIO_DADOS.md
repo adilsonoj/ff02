@@ -50,6 +50,7 @@ __Descrição__: Os tipos de campos de uma fatura são descritos por diferentes 
 | --- | --- | --- | --- |
 | CD_TIPO_LANC | NUMERIC(8) | PK incrementada com sequence FFSQ205 | Chave artificial |
 | DE_TIPO_LANC | VARCHAR(20) | | Descrição do tipo de lançamento (campo da fatura) |
+| LG_ENCG | CHAR(1) | "S" ou "N" | Determina se lançamento é um encargo ou não |
 
 # Tabelas do Módulo de Consumo
 
