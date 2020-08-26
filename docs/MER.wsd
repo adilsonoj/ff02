@@ -22,6 +22,8 @@ package Fatura {
         CD_MODL_FATR: NUMERIC(8) [FK]
         DT_INIC: DATE
         DT_FIM: DATE
+        LG_ATIV: CHAR(1)
+        (( ACRESCENTAR CAMPO LG_ATIV À ESTA TABELA ))
     }
 
     entity FFVU_MODL_FATR {
@@ -29,9 +31,9 @@ package Fatura {
         ---
         CD_MODL_FATR: NUMERIC(8) [PK]
         --
-        CD_TIPO_SERV: NUMERIC(8) [PK]
+        CD_TIPO_SERV: NUMERIC(8) [FK]
         CD_TIPO_LANC: NUMERIC(8)
-        DE_TIPO_FATR: VARCHAR(20)
+        DE_TIPO_FATR: VARCHAR2(20)
     }
 
     entity FFVU_TIPO_LANC {
@@ -39,7 +41,9 @@ package Fatura {
         ---
         CD_TIPO_LANC: NUMERIC(8) [PK]
         --
-        DE_TIPO_LANC: VARCHAR (20)
+        DE_TIPO_LANC: VARCHAR2(20)
+        LG_ENCG: CHAR(1)
+        (( ACRECENTAR CAMPO LG_ENCG À ESTA TABELA ))
     }
 
     entity FFVU_TIPO_SERV {
@@ -47,7 +51,7 @@ package Fatura {
         ---
         CD_TIPO_SERV: NUMERIC(8) [PK]
         --
-        DE_TIPO_SERV VARCHAR(20)
+        DE_TIPO_SERV VARCHAR2(20)
         (( ALTERAR NOME DE DE_CLAS_FATR PARA DE_TIPO_SERV ))
     }
 
@@ -61,7 +65,7 @@ package Consumo {
         CD_TIPO_CONS: NUMERIC(8) [PK]
         --
         CD_TIPO_SERV: NUMERIC(8) [FK]
-        DE_TIPO_CONS: VARCHAR(20)
+        DE_TIPO_CONS: VARCHAR2(20)
     }
 
     entity FFVU_MDDA_CONS  {
@@ -71,7 +75,8 @@ package Consumo {
         ---
         CD_UNID_CONS: NUMERIC(8) [FK]
         CD_TIPO_CONS: NUMERIC(8) [FK]
-        VL_MDDA_CONS: NUMERIC(8)
+        VL_MDDA_CONS: NUMERIC(10, 2)
+        (( Alterar tipo de NUMERIC(8) para NUMERIC(10, 2) ))
         DT_MDDA_CONS: DATE
     }
 
@@ -82,7 +87,7 @@ package Consumo {
         ---
         ID_CLIE_CAP: CHAR(5) [FK]
         CD_TIPO_UNID_CONS: NUMERIC(8) [FK]
-        DE_UNID_CONS: VARCHAR(20)
+        DE_UNID_CONS: VARCHAR2(20)
         LG_ATIV: CHAR(1)
     }
 
@@ -91,7 +96,7 @@ package Consumo {
         ---
         CD_TIPO_UNID_CONS: NUMERIC(8) [PK]
         ---
-        DE_TIPO_UNID_CONS: VARCHAR(2)
+        DE_TIPO_UNID_CONS: VARCHAR2(20)
     }
 
 }
@@ -134,5 +139,6 @@ FFVU_TIPO_CONS ||--o{ FFVU_MDDA_CONS
 FFVU_MDDA_CONS }o--|| FFVU_UNID_CONS
 FFVU_UNID_CONS }o--|| FFVU_TIPO_UNID_CONS
 FFVU_UNID_CONS }o--|| FFVU_CLIE
+FFVU_MODL_FATR }o--|| FFVU_TIPO_LANC
 
 @enduml
