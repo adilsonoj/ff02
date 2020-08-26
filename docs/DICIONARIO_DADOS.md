@@ -27,7 +27,7 @@ __Descrição__: Tabela com conjunto de faturas gerenciadas pelo sistema
 __Descrição__: Os tipos de campos de uma fatura são descritos por diferentes lançamentos
 
 | Campo | Tipo | Restrição de Domínio | Descrição |
-| --- | --- | --- | --- | --- |
+| --- | --- | --- | --- |
 | CD_TIPO_LANC | NUMERIC(8) | PK incrementada com sequence FFSQ205 | Chave artificial |
 | DE_TIPO_LANC | VARCHAR(20) | | Descrição do tipo de lançamento (campo da fatura) |
 
@@ -36,7 +36,7 @@ __Descrição__: Os tipos de campos de uma fatura são descritos por diferentes 
 __Descrição__: As modalidades de fatura, representadas por esta entidade, correspondem aos diferentes tipos de conjuntos de campos que uma fatura pode apresentar. Uma fatura de energia elétrica, por exemplo, pode apresentar diferentes conjuntos de campos em sua fatura a depender do tipo de tarifa. Os diferentes conjuntos que podem ocorrer para esse tipo de serviço (serviço de energia) é representado pela modalidade de fatura.
 
 | Campo | Tipo | Restrição de Domínio | Descrição |
-| --- | --- | --- | --- | --- |
+| --- | --- | --- | --- |
 | CD_MODL_FATR | NUMERIC(8) | PK incrementada com sequence FFSQ203 | Chave artificial |
 | CD_TIPO_SERV | NUMERIC(8) | FK para a tabela FFVU_TIPO_SERV | Se refere ao tipo de serviço (água, energia etc.) ao qual a modalidade tarifária se refere (ver descrição acima) |
 | DE_TIPO_FATR | VARCHAR(20) | | Descrição do tipo de fatura |
