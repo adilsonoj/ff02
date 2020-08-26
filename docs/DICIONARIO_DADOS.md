@@ -22,15 +22,6 @@ __Descrição__: Tabela com conjunto de faturas gerenciadas pelo sistema
 | DT_INIC | DATE | Deve ser menor que DT_FIM  | Data de início da cobrança da fatura |
 | DT_FIM | DATE | Deve ser maior que DT_INIC | Data fim da cobrança da fatura |
 
-## Tabela FFVU_TIPO_LANC
-
-__Descrição__: Os tipos de campos de uma fatura são descritos por diferentes lançamentos
-
-| Campo | Tipo | Restrição de Domínio | Descrição |
-| --- | --- | --- | --- |
-| CD_TIPO_LANC | NUMERIC(8) | PK incrementada com sequence FFSQ205 | Chave artificial |
-| DE_TIPO_LANC | VARCHAR(20) | | Descrição do tipo de lançamento (campo da fatura) |
-
 ## Tabela FFVU_MODL_FATR
 
 __Descrição__: As modalidades de fatura, representadas por esta entidade, correspondem aos diferentes tipos de conjuntos de campos que uma fatura pode apresentar. Uma fatura de energia elétrica, por exemplo, pode apresentar diferentes conjuntos de campos em sua fatura a depender do tipo de tarifa. Os diferentes conjuntos que podem ocorrer para esse tipo de serviço (serviço de energia) é representado pela modalidade de fatura.
@@ -40,3 +31,41 @@ __Descrição__: As modalidades de fatura, representadas por esta entidade, corr
 | CD_MODL_FATR | NUMERIC(8) | PK incrementada com sequence FFSQ203 | Chave artificial |
 | CD_TIPO_SERV | NUMERIC(8) | FK para a tabela FFVU_TIPO_SERV | Se refere ao tipo de serviço (água, energia etc.) ao qual a modalidade tarifária se refere (ver descrição acima) |
 | DE_TIPO_FATR | VARCHAR(20) | | Descrição do tipo de fatura |
+
+## Tabela FFVU_TIPO_SERV
+
+__Descrição__: Descreve se a fatura em questão (ou o tipo de consumo em questão) é de água, energia etc.
+
+| Campo | Tipo | Restrição de Domínio | Descrição |
+| --- | --- | --- | --- |
+| CD_TIPO_SERV | NUMERIC(8) | PK incrementada com sequence FFSQ206 | Chave artificial |
+| DE_TIPO_SERV | VARCHAR2(20) | | Descrição do tipo de serviço |
+
+## Tabela FFVU_TIPO_LANC
+
+__Descrição__: Os tipos de campos de uma fatura são descritos por diferentes lançamentos
+
+| Campo | Tipo | Restrição de Domínio | Descrição |
+| --- | --- | --- | --- |
+| CD_TIPO_LANC | NUMERIC(8) | PK incrementada com sequence FFSQ205 | Chave artificial |
+| DE_TIPO_LANC | VARCHAR(20) | | Descrição do tipo de lançamento (campo da fatura) |
+
+# Tabelas do Módulo de Consumo
+
+## Tabela FFVU_TIPO_CONS
+
+__Descrição__: Determina se o consumo medido é de demanda ponta, demanda fora ponta, vazão de água etc. Notar que cada tipo de consumo se associa a um determinado tipo deserviço (energia, água...)
+
+| Campo | Tipo | Restrição de Domínio | Descrição |
+| --- | --- | --- | --- |
+| CD_TIPO_CONS | NUMERIC(8) | PK incrementada com sequence FFSQ204 | Chave artificial |
+| CD_TIPO_SERV | NUMERIC(8) | FK para a tabela FFVU_MDDA_CONS | Determina o serviço referente ao tipo de medição |
+| DE_TIPO_CONS | VARCHAR(20) | | Descreve o tipo de consumo em questão |
+
+## FFVU_MDDA_CONS
+
+## FFVU_UNID_CONS
+
+## FFVU_TIPO_UNID_CONS
+
+## FFVU_CLIE
