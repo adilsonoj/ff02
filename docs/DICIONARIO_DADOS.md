@@ -31,7 +31,7 @@ __Descrição__: As modalidades de fatura, representadas por esta entidade, corr
 | --- | --- | --- | --- | --- | --- |
 | CD_MODL_FATR | NUMERIC(8) | PK incrementada com sequence FFSQ203 | Chave artificial | Sim | Sim |
 | CD_TIPO_SERV | NUMERIC(8) | FK para a tabela FFVU_TIPO_SERV | Se refere ao tipo de serviço (água, energia etc.) ao qual a modalidade tarifária se refere (ver descrição acima) | Não | Não |
-| DE_TIPO_FATR | VARCHAR(20) | | Descrição do tipo de fatura | Não | Sim |
+| DE_TIPO_FATR | VARCHAR(50) | | Descrição do tipo de fatura | Não | Sim |
 
 ## Tabela FFVU_TIPO_SERV
 
@@ -40,7 +40,7 @@ __Descrição__: Descreve se a fatura em questão (ou o tipo de consumo em quest
 | Campo | Tipo | Restrição de Domínio | Descrição | Unique | Not Null |
 | --- | --- | --- | --- | --- | --- |
 | CD_TIPO_SERV | NUMERIC(8) | PK incrementada com sequence FFSQ206 | Chave artificial | Sim | Sim |
-| DE_TIPO_SERV | VARCHAR2(20) | | Descrição do tipo de serviço | Não | Sim |
+| DE_TIPO_SERV | VARCHAR2(50) | | Descrição do tipo de serviço | Não | Sim |
 
 ## Tabela FFVU_TIPO_LANC
 
@@ -50,7 +50,7 @@ __Descrição__: Os tipos de campos de uma fatura são descritos por diferentes 
 | --- | --- | --- | --- | --- | --- |
 | CD_TIPO_LANC | NUMERIC(8) | PK incrementada com sequence FFSQ205 | Chave artificial | Sim | Sim |
 | CD_MODL_FATR | NUMERIC(8) | FK para tabela FFVU_MODL_FATR | Determina a qual modalidade de fatura o campo se refere | Não | Não |
-| DE_TIPO_LANC | VARCHAR(20) | | Descrição do tipo de lançamento (campo da fatura) | Não | Sim |
+| DE_TIPO_LANC | VARCHAR(50) | | Descrição do tipo de lançamento (campo da fatura) | Não | Sim |
 | LG_ENCG | CHAR(1) | "S" ou "N" | Determina se lançamento é um encargo ou não | Não | Sim |
 
 # Tabelas do Módulo de Consumo
@@ -63,7 +63,7 @@ __Descrição__: Determina se o consumo medido é de demanda ponta, demanda fora
 | --- | --- | --- | --- | --- | --- |
 | CD_TIPO_CONS | NUMERIC(8) | PK incrementada com sequence FFSQ204 | Chave artificial | Sim | Sim |
 | CD_TIPO_SERV | NUMERIC(8) | FK para a tabela FFVU_MDDA_CONS | Determina o serviço referente ao tipo de medição | Não | Não |
-| DE_TIPO_CONS | VARCHAR(20) | | Descreve o tipo de consumo em questão | Não | Sim |
+| DE_TIPO_CONS | VARCHAR(50) | | Descreve o tipo de consumo em questão | Não | Sim |
 
 ## FFVU_MDDA_CONS
 
@@ -86,7 +86,7 @@ __Descrição__: Entidade que representa os diferentes centros de consumo presen
 | CD_UNID_CONS | NUMERIC(8) | PK implementada com sequence FFSQ208 | | Sim | Sim |
 | ID_CLIE_CAP | CHAR(5) | FK para tabela FFVU_CLIE | Determina OM responsável pela Unidade de Consumo | Não | Não |
 | CD_TIPO_UNID_CONS | NUMERIC(8) | FK para tabela FFVU_TIPO_UNID_CONS | Determina a classificação da Unidade de Consumo (navio, OM de terra etc.) | Não | Não |
-| DE_UNID_CONS | VARCHAR2(20) | | Descrição da unidade de consumo | Não | Sim |
+| DE_UNID_CONS | VARCHAR2(50) | | Descrição da unidade de consumo | Não | Sim |
 | LG_ATIV | CHAR(1) | "S" ou "N" | Determina se o registro se encontra ativo | Não | Sim |
 
 ## FFVU_TIPO_UNID_CONS
@@ -96,7 +96,7 @@ __Descrição:__ Tabela de domínio relativa ao tipo de Unidade de Consumo (O.M 
 | Campo | Tipo | Restrição de Domínio | Descrição | Unique | Not Null |
 | --- | --- | --- | --- | --- | --- |
 | CD_TIPO_UNID_CONS | NUMERIC(8) | PK implementada com sequence FFSQ207 | Chave artificial | Sim | Sim |
-| DE_TIPO_UNID_CONS | VARCHAR2(20) | | Descrição do tipo de unidade de consumo | Não | Sim | 
+| DE_TIPO_UNID_CONS | VARCHAR2(50) | | Descrição do tipo de unidade de consumo | Não | Sim | 
 
 # Tabela Externa do Sistema EE01
 
