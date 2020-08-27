@@ -7,8 +7,8 @@ __Descrição__: Tabela com valor de lançamentos que constam nas diferentes fat
 | Campo | Tipo | Restrição de Domínio | Descrição | Unique | Not Null |
 | --- | --- | --- | --- | --- | --- |
 | CD_LANC | NUMERIC(8) | PK incrementada com sequence FFSQ201 | Chave artificial | Sim | Sim |
-| CD_FATR_SERV | NUMERIC(8) | FK para a tabela FFVU_FATR_SERV | Determina à qual fatura o lançamento se refere | Não | Sim |
-| CD_TIPO_LANC | NUMERIC(8) | FK para a tabela FFVU_TIPO_LANC | Determina o tipo de lançamento, ou seja, o tipo de campo da respectiva fatura ao qual se refere o lançamento | Não | Sim |
+| CD_FATR_SERV | NUMERIC(8) | FK para a tabela FFVU_FATR_SERV | Determina à qual fatura o lançamento se refere | Não | Não |
+| CD_TIPO_LANC | NUMERIC(8) | FK para a tabela FFVU_TIPO_LANC | Determina o tipo de lançamento, ou seja, o tipo de campo da respectiva fatura ao qual se refere o lançamento | Não | Não |
 | VL_LANC | NUMERIC(10, 2) | | Descreve o valor monetário do lançamento | Não | Sim |
 
 ## Tabela FFVU_FATR_SERV
@@ -18,7 +18,7 @@ __Descrição__: Tabela com conjunto de faturas gerenciadas pelo sistema
 | Campo | Tipo | Restrição de Domínio | Descrição | Unique | Not Null |
 | --- | --- | --- | --- | --- | --- |
 | CD_FATR_SERV | NUMERIC(8) | PK incrementada com sequence FFSQ200 | Chave artificial | Sim | Sim |
-| CD_MODL_FATR | NUMERIC(8) | FK para a tabela FFVU_MODL_FATR | Modalidade (conjunto de campos) presente na fatura | Não | Sim |
+| CD_MODL_FATR | NUMERIC(8) | FK para a tabela FFVU_MODL_FATR | Modalidade (conjunto de campos) presente na fatura | Não | Não |
 | DT_INIC | DATE | Deve ser menor que DT_FIM  | Data de início da cobrança da fatura | Não | Sim |
 | DT_FIM | DATE | Deve ser maior que DT_INIC | Data fim da cobrança da fatura | Não | Sim |
 | LG_ATIV | CHAR(1) | "S" ou "N" | Determina se o registro se encontra ativo | Não | Sim |
@@ -30,8 +30,7 @@ __Descrição__: As modalidades de fatura, representadas por esta entidade, corr
 | Campo | Tipo | Restrição de Domínio | Descrição | Unique | Not Null |
 | --- | --- | --- | --- | --- | --- |
 | CD_MODL_FATR | NUMERIC(8) | PK incrementada com sequence FFSQ203 | Chave artificial | Sim | Sim |
-| CD_TIPO_SERV | NUMERIC(8) | FK para a tabela FFVU_TIPO_SERV | Se refere ao tipo de serviço (água, energia etc.) ao qual a modalidade tarifária se refere (ver descrição acima) | Não | Sim |
-| CD_TIPO_LANC | NUMERIC(8) | FK para a tabela FFVU_TIPO_LANC | 
+| CD_TIPO_SERV | NUMERIC(8) | FK para a tabela FFVU_TIPO_SERV | Se refere ao tipo de serviço (água, energia etc.) ao qual a modalidade tarifária se refere (ver descrição acima) | Não | Não |
 | DE_TIPO_FATR | VARCHAR(20) | | Descrição do tipo de fatura | Não | Sim |
 
 ## Tabela FFVU_TIPO_SERV
@@ -63,7 +62,7 @@ __Descrição__: Determina se o consumo medido é de demanda ponta, demanda fora
 | Campo | Tipo | Restrição de Domínio | Descrição | Unique | Not Null |
 | --- | --- | --- | --- | --- | --- |
 | CD_TIPO_CONS | NUMERIC(8) | PK incrementada com sequence FFSQ204 | Chave artificial | Sim | Sim |
-| CD_TIPO_SERV | NUMERIC(8) | FK para a tabela FFVU_MDDA_CONS | Determina o serviço referente ao tipo de medição | Não | Sim |
+| CD_TIPO_SERV | NUMERIC(8) | FK para a tabela FFVU_MDDA_CONS | Determina o serviço referente ao tipo de medição | Não | Não |
 | DE_TIPO_CONS | VARCHAR(20) | | Descreve o tipo de consumo em questão | Não | Sim |
 
 ## FFVU_MDDA_CONS
@@ -73,7 +72,7 @@ __Descrição__: Determina o valor da medida realizada, para se auferir o consum
 | Campo | Tipo | Restrição de Domínio | Descrição | Unique | Not Null |
 | --- | --- | --- | --- | --- | --- |
 | CD_MDDA_CONS | NUMERIC(8) | PK implementada com sequence FFSQ202 | Chave  | Sim | Sim |
-| CD_UNID_CONS | NUMERIC(8) | FK para tabela FFVU_CLIE | Determina OM responsável pela UC (prédio, navio etc.) | Não | Sim |
+| CD_UNID_CONS | NUMERIC(8) | FK para tabela FFVU_CLIE | Determina OM responsável pela UC (prédio, navio etc.) | Não | Não |
 | CD_TIPO_CONS | NUMERIC(8) | | | | |
 | VL_MDDA_CONS | NUMERIC(10, 2) | | Valor da medida do consumo | Não | Sim |
 | DT_MDDA_CONS | DATE | | Data na qual o consumo foi levantado | Não | Sim |
@@ -85,8 +84,8 @@ __Descrição__: Entidade que representa os diferentes centros de consumo presen
 | Campo | Tipo | Restrição de Domínio | Descrição | Unique | Not Null |
 | --- | --- | --- | --- | --- | --- |
 | CD_UNID_CONS | NUMERIC(8) | PK implementada com sequence FFSQ208 | | Sim | Sim |
-| ID_CLIE_CAP | CHAR(5) | FK para tabela FFVU_CLIE | Determina OM responsável pela Unidade de Consumo | Não | Sim |
-| CD_TIPO_UNID_CONS | NUMERIC(8) | FK para tabela FFVU_TIPO_UNID_CONS | Determina a classificação da Unidade de Consumo (navio, OM de terra etc.) | Não | Sim |
+| ID_CLIE_CAP | CHAR(5) | FK para tabela FFVU_CLIE | Determina OM responsável pela Unidade de Consumo | Não | Não |
+| CD_TIPO_UNID_CONS | NUMERIC(8) | FK para tabela FFVU_TIPO_UNID_CONS | Determina a classificação da Unidade de Consumo (navio, OM de terra etc.) | Não | Não |
 | DE_UNID_CONS | VARCHAR2(20) | | Descrição da unidade de consumo | Não | Sim |
 | LG_ATIV | CHAR(1) | "S" ou "N" | Determina se o registro se encontra ativo | Não | Sim |
 
@@ -106,4 +105,3 @@ __Descrição:__ Tabela de domínio relativa ao tipo de Unidade de Consumo (O.M 
 __Descrição__: Lista os diferentes "clientes" (OM's) presentes no CNIC
 
 - Checar especificação do respectivo sistema para descrições mais detalhadas
-
