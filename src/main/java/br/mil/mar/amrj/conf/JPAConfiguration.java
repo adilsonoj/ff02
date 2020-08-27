@@ -39,18 +39,23 @@ public class JPAConfiguration {
 		 */
         
         
-        	dataSource.setUsername("usdsff1u"); 
-        	dataSource.setPassword("usdsff1u");
-        	dataSource.setUrl("jdbc:oracle:thin:@10.1.32.50:1521:amrjdsv");
-        	dataSource.setDriverClassName("oracle.jdbc.OracleDriver");
-        	factoryBean.setDataSource(dataSource);
+//        	dataSource.setUsername("usdsff1u"); 
+//        	dataSource.setPassword("usdsff1u");
+//        	dataSource.setUrl("jdbc:oracle:thin:@10.1.32.50:1521:amrjdsv");
         
+        
+        dataSource.setUsername("admin");
+        dataSource.setPassword("adminsystem");
+        dataSource.setUrl("jdbc:oracle:thin:@localhost:1521:xe");
+        dataSource.setDriverClassName("oracle.jdbc.OracleDriver");
+        factoryBean.setDataSource(dataSource);
+
         Properties props = new Properties();
-        props.setProperty("hibernate.dialect", "org.hibernate.dialect.Oracle10gDialect");
+        props.setProperty("hibernate.dialect", "org.hibernate.dialect.OracleDialect");
         props.setProperty("hibernate.show_sql", "true");
         props.setProperty("hibernate.format_sql", "true");
         props.setProperty("hibernate.default_schema", "AMDBA");
-       // props.setProperty("hibernate.hbm2ddl.auto", "create");
+        props.setProperty("hibernate.hbm2ddl.auto", "update");
         factoryBean.setJpaProperties(props);
 
         factoryBean.setPackagesToScan("br.mil.mar.amrj.model");

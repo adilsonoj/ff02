@@ -1,8 +1,6 @@
 package br.mil.mar.amrj.service;
 
-import java.text.DateFormat;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -12,14 +10,20 @@ import org.springframework.stereotype.Service;
 
 import br.mil.mar.amrj.DTO.FaturaDto;
 import br.mil.mar.amrj.dao.FaturaDao;
+import br.mil.mar.amrj.dao.LancamentoDAO;
 import br.mil.mar.amrj.model.FaturaServico;
+import br.mil.mar.amrj.model.Lancamento;
 import br.mil.mar.amrj.model.ModalidadeFatura;
+import br.mil.mar.amrj.model.TipoLancamento;
 
 @Service
 public class FaturaService {
 	
 	@Autowired
 	FaturaDao faturaDao;
+	
+	@Autowired
+	LancamentoDAO lancamentoDAO;
 	
 	public List<FaturaServico> listar(){
 		return faturaDao.listar();
@@ -37,6 +41,16 @@ public class FaturaService {
 		
 		fatura.setModalidadeFatura(modalidade);
 		faturaDao.persist(fatura);
+					
+		TipoLancamento tipoLancamento = new TipoLancamento();
+		tipoLancamento.setCdTipoLanc(dto.getCdTipoLanc());
+		
+		Lancamento lancamento = new Lancamento();		
+		lancamento.setVlLancdeTipoLanc(dto.getVlLanc());
+		lancamento.setTipoLancamento(tipoLancamento);
+		lancamento.setFaturaServico(fatura);
+		lancamentoDAO.persist(lancamento);
+		
 	}
 	
 	public LocalDate parseLocalDate(String data) {
