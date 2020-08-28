@@ -7,7 +7,11 @@ const app = new Vue({
 		dtFim:'',
 		tipoEncargo: [],
 		cdTipoLanc:'',
-		vlLanc: ''
+		vlLanc: '',
+		vlLancConsPont: '',
+		vlLancConsForaPont: '',
+		vlLancTarifPont: '',
+		vlLancTarifForaPont: '',
 	},
 	created(){
 		this.getFaturas();
@@ -22,11 +26,37 @@ const app = new Vue({
 			.then(data => this.faturas = data)
 		},
 		inclui(){
+			
+			const lancamentos = [];
+			
+			lancamentos.push(
+				{
+					cdTipoLanc: this.cdTipoLanc,
+					vlLanc: this.vlLanc.replace('.','').replace(',','.'),
+				},
+				{
+					cdTipoLanc: 1,
+					vlLanc: this.vlLancConsPont.replace('.','').replace(',','.'), //1000.50   1000.50
+				},
+				{
+					cdTipoLanc: 2,
+					vlLanc: this.vlLancConsForaPont.replace('.','').replace(',','.'), //1.000,50   1000.50
+				},
+				{
+					cdTipoLanc: 3,
+					vlLanc: this.vlLancTarifPont.replace('.','').replace(',','.'), //1.000,50   1000.50
+				},
+				{
+					cdTipoLanc: 4,
+					vlLanc: this.vlLancTarifForaPont.replace('.','').replace(',','.'), //1.000,50   1000.50
+				},
+				
+			)
+			
 			const dados = {
 					dtIni: this.dtIni, 
 					dtFim: this.dtFim,
-					cdTipoLanc: this.cdTipoLanc,
-					vlLanc: this.vlLanc.replace('.','').replace(',','.')
+					lancamentos: lancamentos,
 			}
 			const conf = {
 					method: 'POST',
@@ -36,9 +66,18 @@ const app = new Vue({
 				    },
 					body: JSON.stringify(dados)
 				}
-			console.log(dados)
 			fetch('inclui',conf)
-					.catch(erro => console.error(erro))
+					.then(resp => {
+						//if(resp.ok) 
+							return resp.json();
+					})
+					.then(data => {
+						if(data.error){
+							throw new Error(data.msg)
+						}
+						console.log(data)
+					})
+					.catch(err => console.error("Aconteceu um erro:",err))
 		},
 		getTipoEncargos(){
 			fetch('listarEncargos')

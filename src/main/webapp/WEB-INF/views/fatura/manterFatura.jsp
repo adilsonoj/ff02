@@ -146,7 +146,7 @@
                                     <div class="form-group">
                                         <div class="input-group">
                                             <div class="input-group-prepend"> <span class="input-group-text">Ponta</span> </div>
-                                            <input type="text" class="form-control text-right" placeholder="000.000,00"/>
+                                            <input type="text" class="form-control text-right" placeholder="000.000,00" v-model="vlLancConsPont"/>
                                         </div>
                                     </div>
                                 </div>
@@ -154,7 +154,7 @@
                                     <div class="form-group">
                                         <div class="input-group">
                                             <div class="input-group-prepend"> <span class="input-group-text">Ponta</span> </div>
-                                            <input type="text" class="form-control text-right" placeholder="000.000,00"/>
+                                            <input type="text" class="form-control text-right" placeholder="000.000,00" v-model="vlLancTarifPont"/>
                                         </div>
                                     </div>
                                 </div>
@@ -163,7 +163,7 @@
                                     <div class="form-group">
                                         <div class="input-group">
                                             <div class="input-group-prepend"> <span class="input-group-text">Fora Ponta</span> </div>
-                                            <input type="text" class="form-control text-right" placeholder="000.000,00"/>
+                                            <input type="text" class="form-control text-right" placeholder="000.000,00" v-model="vlLancConsForaPont"/>
                                         </div>
                                     </div>
                                 </div>
@@ -171,7 +171,7 @@
                                     <div class="form-group">
                                         <div class="input-group">
                                             <div class="input-group-prepend"> <span class="input-group-text">Fora Ponta</span> </div>
-                                            <input type="text" class="form-control text-right" placeholder="000.000,00"/>
+                                            <input type="text" class="form-control text-right" placeholder="000.000,00" v-model="vlLancTarifForaPont"/>
                                         </div>
                                     </div>
                                 </div>

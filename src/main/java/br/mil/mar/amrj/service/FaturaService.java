@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.mil.mar.amrj.DTO.FaturaDto;
+import br.mil.mar.amrj.DTO.LancamentoDto;
 import br.mil.mar.amrj.dao.FaturaDao;
 import br.mil.mar.amrj.dao.LancamentoDAO;
 import br.mil.mar.amrj.model.FaturaServico;
@@ -34,6 +35,7 @@ public class FaturaService {
 	public void persist(FaturaDto dto) {
 		FaturaServico fatura = new FaturaServico();
 		
+		//FATURA
 		fatura.setDtInic(parseLocalDate(dto.getDtIni()));
 		fatura.setDtFim(parseLocalDate(dto.getDtFim()));
 		
@@ -42,15 +44,25 @@ public class FaturaService {
 		
 		fatura.setModalidadeFatura(modalidade);
 		faturaDao.persist(fatura);
-					
-		TipoLancamento tipoLancamento = new TipoLancamento();
-		tipoLancamento.setCdTipoLanc(dto.getCdTipoLanc());
 		
-		Lancamento lancamento = new Lancamento();		
-		lancamento.setVlLanc(dto.getVlLanc());
-		lancamento.setTipoLancamento(tipoLancamento);
-		lancamento.setFaturaServico(fatura);
-		lancamentoDAO.persist(lancamento);
+		
+		//LANCAMENTOS
+		List<LancamentoDto> lancamentos = dto.getLancamentos();
+		
+		for (LancamentoDto lancamentoDto : lancamentos) {
+			
+			TipoLancamento tipoLancamento = new TipoLancamento();
+			tipoLancamento.setCdTipoLanc(lancamentoDto.getCdTipoLanc());
+			
+			Lancamento lancamento = new Lancamento();		
+			
+			lancamento.setVlLanc(lancamentoDto.getVlLanc());
+			
+			lancamento.setTipoLancamento(tipoLancamento);
+			
+			lancamento.setFaturaServico(fatura);
+			lancamentoDAO.persist(lancamento);
+		}
 		
 	}
 	

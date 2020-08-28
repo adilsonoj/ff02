@@ -40,7 +40,12 @@ public class FaturaController {
 	}
 	
 	@RequestMapping(value = "/inclui", method = RequestMethod.POST)
-	public HttpStatus inclui(@RequestBody FaturaDto dto){
+	public void inclui(@RequestBody FaturaDto dto){
+		faturaService.persist(dto);
+	}
+	
+	@RequestMapping(value = "/incluir", method = RequestMethod.POST)
+	public HttpStatus incluir(@RequestBody FaturaDto dto){
 		faturaService.persist(dto);
 		return HttpStatus.OK;
 		
