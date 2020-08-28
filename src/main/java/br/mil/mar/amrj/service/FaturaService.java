@@ -45,7 +45,6 @@ public class FaturaService {
 		fatura.setModalidadeFatura(modalidade);
 		faturaDao.persist(fatura);
 		
-		
 		//LANCAMENTOS
 		List<LancamentoDto> lancamentos = dto.getLancamentos();
 		
@@ -57,9 +56,7 @@ public class FaturaService {
 			Lancamento lancamento = new Lancamento();		
 			
 			lancamento.setVlLanc(lancamentoDto.getVlLanc());
-			
 			lancamento.setTipoLancamento(tipoLancamento);
-			
 			lancamento.setFaturaServico(fatura);
 			lancamentoDAO.persist(lancamento);
 		}

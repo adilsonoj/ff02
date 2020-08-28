@@ -65,9 +65,6 @@
                     </tr>
                   </tbody>
                 </table>
-                <div v-for="fatura of faturas" :key="fatura.cdFatr">
-                {{fatura.cdFatr}}
-                </div>
 			</div>
 			<div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1 offset-5">
                 <div  class="dataTables_paginate paging_full_numbers">
@@ -229,16 +226,7 @@
                                       </tr>
                                     </thead>
                                     <tbody>
-                                      <tr>
-                                        <td>Tipo do Encargo</td>
-                                        <td class="text-right">R$ 000.000,00</td>
-                                        <td class="d-flex justify-content-center"><span data-toggle="tooltip" data-container="body" data-placement="top" title="" role="tooltip" data-original-title="Editar">
-                                          <button type="button" data-href="#" class="btn btn-warning btn-sm btn-toolbar"><i class="fas fa-pencil-alt"></i></button>
-                                          </span> &nbsp;<span data-toggle="tooltip" data-container="body" data-placement="top" title="Remover" role="tooltip">
-                                          <button type="button" data-href="#" class="btn btn-danger btn-sm btn-toolbar"><i class="fas fa-minus"></i></button>
-                                          </span></td>
-                                      </tr>
-                                      <tr>
+                                    <tr>
                                         <td>
                                         	<select class="form-control form-control-sm" v-model="cdTipoLanc">
 	                                            <option disabled value="">Selecione...</option>
@@ -252,6 +240,16 @@
                                           <button type="button" data-href="#" class="btn btn-success btn-sm btn-toolbar"><i class="fas fa-plus"></i></button>
                                           </span></td>
                                       </tr>
+                                      <tr>
+                                        <td>Tipo do Encargo</td>
+                                        <td class="text-right">R$ 000.000,00</td>
+                                        <td class="d-flex justify-content-center"><span data-toggle="tooltip" data-container="body" data-placement="top" title="" role="tooltip" data-original-title="Editar">
+                                          <button type="button" data-href="#" class="btn btn-warning btn-sm btn-toolbar"><i class="fas fa-pencil-alt"></i></button>
+                                          </span> &nbsp;<span data-toggle="tooltip" data-container="body" data-placement="top" title="Remover" role="tooltip">
+                                          <button type="button" data-href="#" class="btn btn-danger btn-sm btn-toolbar"><i class="fas fa-minus"></i></button>
+                                          </span></td>
+                                      </tr>
+                                      
                                     </tbody>
                                   </table>
                                 </div>
