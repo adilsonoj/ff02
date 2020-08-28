@@ -26,7 +26,7 @@ public class Lancamento {
 	private Integer cdLanc;
 	
 	@Column(name="VL_LANC")
-	private BigDecimal vlMddaCons;
+	private BigDecimal vlLanc;
 	
 	@ManyToOne
 	@JoinColumn(name="CD_TIPO_LANC", referencedColumnName="CD_TIPO_LANC")
@@ -36,12 +36,13 @@ public class Lancamento {
 	@JoinColumn(name="CD_FATR", referencedColumnName="CD_FATR")
 	private FaturaServico faturaServico;
 
-	public BigDecimal getVlMddaCons() {
-		return vlMddaCons;
+	
+	public BigDecimal getVlLanc() {
+		return vlLanc;
 	}
 
-	public void setVlMddaCons(BigDecimal vlMddaCons) {
-		this.vlMddaCons = vlMddaCons;
+	public void setVlLanc(BigDecimal vlLanc) {
+		this.vlLanc = vlLanc;
 	}
 
 	public Integer getCdLanc() {

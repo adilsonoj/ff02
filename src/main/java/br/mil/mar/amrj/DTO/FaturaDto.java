@@ -1,6 +1,7 @@
 package br.mil.mar.amrj.DTO;
 
 import java.util.List;
+import java.math.BigDecimal;
 
 public class FaturaDto {
 	
@@ -8,6 +9,8 @@ public class FaturaDto {
 	private String dtFim;
 	
 	private List<LancamentoDto> lancamentoDto;
+	private Integer cdTipoLanc;
+	private BigDecimal vlLanc;
 	
 	public String getDtIni() {
 		return dtIni;
@@ -27,5 +30,17 @@ public class FaturaDto {
 	public void setLancamentoDto(List<LancamentoDto> lancamentoDto) {
 		this.lancamentoDto = lancamentoDto;
 	}
+	public Integer getCdTipoLanc() {
+		return cdTipoLanc;
+	}
+	public void setCdTipoLanc(Integer cdTipoLanc) {
+		this.cdTipoLanc = cdTipoLanc;
+	}
+	public BigDecimal getVlLanc() {
+		return vlLanc;
+	}
+	public void setVlLanc(BigDecimal vlLanc) {
+		this.vlLanc = vlLanc;
+	}	
 
 }

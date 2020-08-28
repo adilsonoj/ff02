@@ -17,8 +17,8 @@ public class FaturaDao {
 	
 	public List<FaturaServico> listar(){
 		String hql = "from FaturaServico c "
-				+ "left join fetch c.modalidadeFatura m "
-				+ "left join fetch m.tipoServico s "
+				+ " join fetch c.modalidadeFatura m "
+				+ " join fetch m.tipoServico s "
 				+ "where "
 				+ "m.cdModlFatr =:codigoFatr and "
 				+ "s.cdTipoServ =:codigoServ";

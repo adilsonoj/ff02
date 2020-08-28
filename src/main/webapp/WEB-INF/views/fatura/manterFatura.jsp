@@ -239,12 +239,15 @@
                                           </span></td>
                                       </tr>
                                       <tr>
-                                        <td><select class="form-control form-control-sm">
-                                            <option value="0" selected>Selecione...</option>
-                                            <option value="1">Tipo 1</option>
-                                            <option value="2">Tipo 2</option>
-                                        </select></td>
-                                        <td><input type="text" class="form-control form-control-sm"></td>
+                                        <td>
+                                        	<select class="form-control form-control-sm" v-model="cdTipoLanc">
+	                                            <option disabled value="">Selecione...</option>
+	                                            <option v-for="tipo in tipoEncargo" :value="tipo.cdTipoLanc">{{tipo.deTipoLanc}}</option>
+                                        	</select>
+                                        </td>
+                                        <td>
+                                        	<input type="text" v-model="vlLanc" class="form-control form-control-sm">
+                                        </td>
                                         <td class="d-flex justify-content-center"><span data-toggle="tooltip" data-container="body" data-placement="top" title="" role="tooltip" data-original-title="Adicionar">
                                           <button type="button" data-href="#" class="btn btn-success btn-sm btn-toolbar"><i class="fas fa-plus"></i></button>
                                           </span></td>
