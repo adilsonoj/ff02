@@ -40,10 +40,10 @@ public class FaturaService {
 	}
 	
 	public LocalDate parseLocalDate(String data) {
-		String[] split = data.split("/");
-		LocalDate of = LocalDate.of(Integer.parseInt(split[2]), Integer.parseInt(split[1]), Integer.parseInt(split[0]));
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		LocalDate localDate = LocalDate.parse(data, formatter);
 		
-		return of;
+		return localDate;
 	}
 	
 	
