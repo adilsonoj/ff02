@@ -58,41 +58,5 @@
 	</head>
 	
 	<body>
-	<header role="header" class="smaller" id="header">
-	<div class="blog-masthead">
-		<!-- Barra Brasil START -->
-		<div id="barra-brasil" style="background:#7F7F7F; height: 20px; padding:0 0 0 10px;display:block;">
-			<div class="container">
-				<ul id="menu-barra-temp" style="list-style:none;">
-					<li style="display:inline; float:left;padding-right:10px; margin-right:10px; border-right:1px solid #EDEDED"><a href="http://brasil.gov.br" style="font-family:sans,sans-serif; text-decoration:none; color:white;">Portal do Governo Brasileiro</a></li>
-					<li><a style="font-family:sans,sans-serif; text-decoration:none; color:white;" href="http://epwg.governoeletronico.gov.br/barra/atualize.html">Atualize sua Barra de Governo</a></li>
-				</ul>
-			</div>
-		</div>
-		<!-- Barra Brasil END -->
-	</div>
-	<div class="blog-header">
-		<div class="container">
-			<!-- START container-br -->
-			<div class="container-br">
-				<!-- START Header Main -->
-				<div class="header-main">
-					<div class="row">
-						<!-- START Site Info -->
-						<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 info">
-							<div class="site-info d-flex"> <a title="Início" href="http://www.amrj.mb/" class="logo navbar-btn pull-left"><img alt="Início" src="${imgPath}/amrj_brasao.gif"></a> <a href="http://www.amrj.mb/" class="mt-1">
-								<h1 class="site-name">Arsenal de Marinha do Rio de Janeiro</h1>
-								</a> </div>
-						</div>
-						<!-- END Site Info -->
-					</div>
-				</div>
-				<!-- END Header Main -->
-			</div>
-			<!-- END container-br -->
-		</div>
-	</div>
-</header>
-<jsp:include page="menu.jsp"></jsp:include>
 
 <!-- <div id="main" class="container"> -->

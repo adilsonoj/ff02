@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 
 import br.mil.mar.amrj.model.FaturaServico;
+import br.mil.mar.amrj.model.Paginacao;
 
 @Repository
 public class FaturaDao {
@@ -15,7 +16,7 @@ public class FaturaDao {
 	@PersistenceContext
 	EntityManager manager;
 	
-	public List<FaturaServico> listar(){
+	public List<FaturaServico> listar(Paginacao paginacao){
 		String hql = "from FaturaServico c "
 				+ " join fetch c.modalidadeFatura m "
 				+ " join fetch m.tipoServico s "
@@ -26,9 +27,26 @@ public class FaturaDao {
 		List<FaturaServico> lista = manager.createQuery(hql, FaturaServico.class)
 				.setParameter("codigoFatr", 1)
 				.setParameter("codigoServ", 1)
+				.setFirstResult(paginacao.getInicio())
+				.setMaxResults(paginacao.getQtd())
 				.getResultList();
 		 
 		return lista;
+	}
+	
+	public Integer total(){
+		String hql = "from FaturaServico c "
+				+ " join fetch c.modalidadeFatura m "
+				+ " join fetch m.tipoServico s "
+				+ "where "
+				+ "m.cdModlFatr =:codigoFatr and "
+				+ "s.cdTipoServ =:codigoServ";
+		
+		return manager.createQuery(hql, FaturaServico.class)
+				.setParameter("codigoFatr", 1)
+				.setParameter("codigoServ", 1)
+				.getResultList().size();
+		 
 	}
 	
 	public List<FaturaServico> getAll(){

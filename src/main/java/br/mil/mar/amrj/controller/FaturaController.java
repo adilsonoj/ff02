@@ -1,6 +1,8 @@
 package br.mil.mar.amrj.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import br.mil.mar.amrj.DTO.FaturaDto;
 import br.mil.mar.amrj.model.FaturaServico;
+import br.mil.mar.amrj.model.Paginacao;
 import br.mil.mar.amrj.model.TipoLancamento;
 import br.mil.mar.amrj.service.FaturaService;
 import br.mil.mar.amrj.service.LancamentoService;
@@ -33,10 +36,14 @@ public class FaturaController {
 	}
 	
 	
-	@RequestMapping(value = "/listar", method = RequestMethod.GET)
+	@RequestMapping(value = "/listar", method = RequestMethod.POST)
 	@ResponseBody
-	public ResponseEntity<List<FaturaServico>> listar(){
-		return ResponseEntity.ok(faturaService.listar());
+	public ResponseEntity<Map<String, Object>> listar(@RequestBody Paginacao paginacao){
+		Map<String, Object> mapResponse =  new HashMap<>();
+		List<FaturaServico> faturas = faturaService.listar(paginacao);
+		mapResponse.put("faturas", faturas);
+		mapResponse.put("total", faturaService.total());
+		return ResponseEntity.ok(mapResponse);
 	}
 	
 	@RequestMapping(value = "/inclui", method = RequestMethod.POST)

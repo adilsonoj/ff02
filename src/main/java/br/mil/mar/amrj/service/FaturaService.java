@@ -16,6 +16,7 @@ import br.mil.mar.amrj.dao.LancamentoDAO;
 import br.mil.mar.amrj.model.FaturaServico;
 import br.mil.mar.amrj.model.Lancamento;
 import br.mil.mar.amrj.model.ModalidadeFatura;
+import br.mil.mar.amrj.model.Paginacao;
 import br.mil.mar.amrj.model.TipoLancamento;
 
 @Service
@@ -27,8 +28,12 @@ public class FaturaService {
 	@Autowired
 	LancamentoDAO lancamentoDAO;
 	
-	public List<FaturaServico> listar(){
-		return faturaDao.listar();
+	public List<FaturaServico> listar(Paginacao paginacao){
+		return faturaDao.listar(paginacao);
+	}
+	
+	public Integer total(){
+		return faturaDao.total();
 	}
 
 	@Transactional
@@ -50,6 +55,10 @@ public class FaturaService {
 		
 		for (LancamentoDto lancamentoDto : lancamentos) {
 			
+			if(lancamentoDto.getCdTipoLanc() == null) 
+				continue;
+			
+				
 			TipoLancamento tipoLancamento = new TipoLancamento();
 			tipoLancamento.setCdTipoLanc(lancamentoDto.getCdTipoLanc());
 			

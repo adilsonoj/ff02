@@ -43,7 +43,7 @@
                   <tbody  v-for="fatura of faturas" :key="fatura.cdFatr">
                     <!--linha 1-->
                     <tr bgcolor="#f8f9fa">
-                      <td class="align-middle text-center" rowspan="3"><a href="#" data-toggle="modal" data-target="#mesano">00/0000</a></td>
+                      <td class="align-middle text-center" rowspan="3"><a href="#" data-toggle="modal" data-target="#mesano">{{fatura.cdFatr}}</a></td>
                     </tr>
                     <tr bgcolor="#f8f9fa">
                       <td class="text-center align-middle"><a href="#" data-toggle="modal" data-target="#consumo">Consumo</a></td>
@@ -69,11 +69,12 @@
 			<div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1 offset-5">
                 <div  class="dataTables_paginate paging_full_numbers">
                     <ul class="pagination">
-                        <li class="paginate_button page-item first disabled"><a href="#" data-dt-idx="0" tabindex="0" class="page-link"><span aria-hidden="true">Â«</span></a></li>
-                        <li class="paginate_button page-item previous disabled"><a href="#" data-dt-idx="1" tabindex="0" class="page-link"><span aria-hidden="true">â¹</span></a></li>
-                        <li class="paginate_button page-item active"><a href="#" data-dt-idx="2" tabindex="0" class="page-link">1</a></li>
-                        <li class="paginate_button page-item next disabled"><a href="#" data-dt-idx="3" tabindex="0" class="page-link"><span aria-hidden="true">âº</span></a></li>
-                        <li class="paginate_button page-item last disabled"><a href="#" data-dt-idx="4" tabindex="0" class="page-link"><span aria-hidden="true">Â»</span></a></li>
+                        <li class="paginate_button page-item first " :class="paginacao.atual == 1 ? 'disabled' : ''"><a @click="primeira" data-dt-idx="0" tabindex="0" class="page-link"><span aria-hidden="true">&laquo;</span></a></li>
+                        <li class="paginate_button page-item previous " :class="paginacao.atual == 1 ? 'disabled' : ''"><a @click="anterior" data-dt-idx="1" tabindex="0" class="page-link"><span aria-hidden="true">&lsaquo;
+                        </span></a></li>
+                        <li class="paginate_button page-item active" ><a href="#" data-dt-idx="2" tabindex="0" class="page-link">{{paginacao.atual}}</a></li>
+                        <li class="paginate_button page-item next " :class="paginacao.atual == paginacao.paginas  ? 'disabled' : ''"><a @click="proximo" data-dt-idx="3" tabindex="0" class="page-link"><span aria-hidden="true">&rsaquo;</span></a></li>
+                        <li class="paginate_button page-item last " :class="paginacao.atual == paginacao.paginas ? 'disabled' : ''"><a @click="ultima" data-dt-idx="4" tabindex="0" class="page-link"><span aria-hidden="true"> &raquo;</span></a></li>
                     </ul>
                 </div>
             </div>
@@ -181,7 +182,7 @@
                                     <div class="form-group">
                                         <div class="input-group">
                                             <div class="input-group-prepend"> <span class="input-group-text">Ponta</span> </div>
-                                            <input type="text" class="form-control text-right" placeholder="000.000,00"/>
+                                            <input type="text" class="form-control text-right" placeholder="000.000,00" v-model="vlLancDemPont"/>
                                         </div>
                                     </div>
                                 </div>
@@ -189,7 +190,7 @@
                                     <div class="form-group">
                                         <div class="input-group">
                                             <div class="input-group-prepend"> <span class="input-group-text">Fora Ponta</span> </div>
-                                            <input type="text" class="form-control text-right" placeholder="000.000,00"/>
+                                            <input type="text" class="form-control text-right" placeholder="000.000,00" v-model="vlLancDemForaPont" />
                                         </div>
                                     </div>
                                 </div>
@@ -199,7 +200,7 @@
                                         <div class="input-group">
 
                                             <div class="input-group-prepend"> <span class="input-group-text">Contratada</span> </div>
-                                            <input type="text" class="form-control text-right" placeholder="000.000,00"/>
+                                            <input type="text" class="form-control text-right" placeholder="000.000,00" v-model="vlLancDemContr"/>
                                         </div>
                                     </div>
                                 </div>
@@ -207,7 +208,7 @@
                                     <div class="form-group">
                                         <div class="input-group">
                                             <div class="input-group-prepend"> <span class="input-group-text">Tarifa</span> </div>
-                                            <input type="text" class="form-control text-right" placeholder="000.000,00"/>
+                                            <input type="text" class="form-control text-right" placeholder="000.000,00" v-model="vlLancDemTari"/>
                                         </div>
                                     </div>
                                 </div>

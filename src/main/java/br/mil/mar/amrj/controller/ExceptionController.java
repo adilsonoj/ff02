@@ -33,7 +33,9 @@ public class ExceptionController extends ResponseEntityExceptionHandler{
 		mapError.put("error", "exception");
 		mapError.put("cod", HttpStatus.BAD_REQUEST.toString());
 		mapError.put("msg", ex.getMessage());
+		ex.printStackTrace();
         return new ResponseEntity<>(mapError, HttpStatus.BAD_REQUEST);
+        
     }
 	
 	@ExceptionHandler(javax.persistence.NonUniqueResultException.class)
