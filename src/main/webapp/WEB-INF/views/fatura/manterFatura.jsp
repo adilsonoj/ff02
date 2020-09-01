@@ -102,16 +102,16 @@
                     <div class="modal-body">
                     	<ul class="nav nav-tabs">
                           <li class="nav-item">
-                            <a class="nav-link active" @click="aba = 'mesanoTab'">MÃªs / Ano</a>
+                            <a class="nav-link" :class="aba == 'mesanoTab' ? 'active' : ''" @click="aba = 'mesanoTab'">MÃªs / Ano</a>
                           </li>
                           <li class="nav-item">
-                            <a class="nav-link" v-on:click="aba = 'consumoTab'">Consumo</a>
+                            <a class="nav-link" :class="aba == 'consumoTab' ? 'active' : ''" @click="aba = 'consumoTab'">Consumo</a>
                           </li>
                           <li class="nav-item">
-                            <a class="nav-link" v-on:click="aba = 'demandaTab'">Demanda</a>
+                            <a class="nav-link" :class="aba == 'demandaTab' ? 'active' : ''" @click="aba = 'demandaTab'">Demanda</a>
                           </li>
                           <li class="nav-item">
-                            <a class="nav-link" v-on:click="aba = 'encargosTab'">Encargos</a>
+                            <a class="nav-link" :class="aba == 'encargosTab' ? 'active' : ''" @click="aba = 'encargosTab'">Encargos</a>
                           </li>
                         </ul>
                         <!-- mes / ano -->
@@ -144,7 +144,7 @@
                                     <div class="form-group">
                                         <div class="input-group">
                                             <div class="input-group-prepend"> <span class="input-group-text">Ponta</span> </div>
-                                            <input type="text" class="form-control text-right" placeholder="000.000,00" v-model="vlLancConsPont"/>
+                                            <input type="text" class="form-control text-right" placeholder="000.000,00" v-model="vlLancConsPont" required/>
                                         </div>
                                     </div>
                                 </div>
@@ -152,7 +152,7 @@
                                     <div class="form-group">
                                         <div class="input-group">
                                             <div class="input-group-prepend"> <span class="input-group-text">Ponta</span> </div>
-                                            <input type="text" class="form-control text-right" placeholder="000.000,00" v-model="vlLancTarifPont"/>
+                                            <input type="text" class="form-control text-right" placeholder="000.000,00" v-model="vlLancTarifPont" required/>
                                         </div>
                                     </div>
                                 </div>
@@ -161,7 +161,7 @@
                                     <div class="form-group">
                                         <div class="input-group">
                                             <div class="input-group-prepend"> <span class="input-group-text">Fora Ponta</span> </div>
-                                            <input type="text" class="form-control text-right" placeholder="000.000,00" v-model="vlLancConsForaPont"/>
+                                            <input type="text" class="form-control text-right" placeholder="000.000,00" v-model="vlLancConsForaPont" required/>
                                         </div>
                                     </div>
                                 </div>
@@ -169,7 +169,7 @@
                                     <div class="form-group">
                                         <div class="input-group">
                                             <div class="input-group-prepend"> <span class="input-group-text">Fora Ponta</span> </div>
-                                            <input type="text" class="form-control text-right" placeholder="000.000,00" v-model="vlLancTarifForaPont"/>
+                                            <input type="text" class="form-control text-right" placeholder="000.000,00" v-model="vlLancTarifForaPont" required/>
                                         </div>
                                     </div>
                                 </div>
@@ -182,7 +182,7 @@
                                     <div class="form-group">
                                         <div class="input-group">
                                             <div class="input-group-prepend"> <span class="input-group-text">Ponta</span> </div>
-                                            <input type="text" class="form-control text-right" placeholder="000.000,00" v-model="vlLancDemPont"/>
+                                            <input type="text" class="form-control text-right" placeholder="000.000,00" v-model="vlLancDemPont" required/>
                                         </div>
                                     </div>
                                 </div>
@@ -190,7 +190,7 @@
                                     <div class="form-group">
                                         <div class="input-group">
                                             <div class="input-group-prepend"> <span class="input-group-text">Fora Ponta</span> </div>
-                                            <input type="text" class="form-control text-right" placeholder="000.000,00" v-model="vlLancDemForaPont" />
+                                            <input type="text" class="form-control text-right" placeholder="000.000,00" v-model="vlLancDemForaPont" required/>
                                         </div>
                                     </div>
                                 </div>
@@ -200,7 +200,7 @@
                                         <div class="input-group">
 
                                             <div class="input-group-prepend"> <span class="input-group-text">Contratada</span> </div>
-                                            <input type="text" class="form-control text-right" placeholder="000.000,00" v-model="vlLancDemContr"/>
+                                            <input type="text" class="form-control text-right" placeholder="000.000,00" v-model="vlLancDemContr" required/>
                                         </div>
                                     </div>
                                 </div>
@@ -208,7 +208,7 @@
                                     <div class="form-group">
                                         <div class="input-group">
                                             <div class="input-group-prepend"> <span class="input-group-text">Tarifa</span> </div>
-                                            <input type="text" class="form-control text-right" placeholder="000.000,00" v-model="vlLancDemTari"/>
+                                            <input type="text" class="form-control text-right" placeholder="000.000,00" v-model="vlLancDemTari" required/>
                                         </div>
                                     </div>
                                 </div>
@@ -266,7 +266,7 @@
         </div>
     </form>
     <!-- modal MES / ANO-->
-    <form novalidate role="form">
+    <form  role="form">
         <div id="mesano" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mesanoLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -313,7 +313,7 @@
     </form>
     
     <!-- modal CONSUMO -->
-    <form novalidate role="form">
+    <form role="form">
         <div id="consumo" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="consumoLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -380,7 +380,7 @@
         </div>
     </form>
     <!-- modal DEMANDA -->
-    <form novalidate role="form">
+    <form  role="form">
         <div id="demanda" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="demandaLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -441,7 +441,7 @@
     </form>
     
     <!-- modal ENCARGOS --> 
-    <form novalidate role="form">
+    <form  role="form">
       <div id="encargos" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mesanoLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
