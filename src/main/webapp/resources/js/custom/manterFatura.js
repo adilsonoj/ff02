@@ -6,7 +6,6 @@ const app = new Vue({
 		dtIni:'',
 		dtFim:'',
 		tipoEncargo: [],
-		cdTipoLanc:'',
 		vlLanc: '',
 		vlLancConsPont: '',
 		vlLancConsForaPont: '',
@@ -23,7 +22,9 @@ const app = new Vue({
 			inicio: 0,
 			qtd: 3,
 		},
-		
+		encargos:[],
+		encargo:[],
+		key:0,
 	},
 	mounted(){
 		this.getFaturas();
@@ -55,10 +56,6 @@ const app = new Vue({
 			const lancamentos = [];
 			
 			lancamentos.push(
-				{
-					cdTipoLanc: this.cdTipoLanc,
-					vlLanc: this.vlLanc.replace('.','').replace(',','.'),
-				},
 				{
 					cdTipoLanc: 1,
 					vlLanc: this.vlLancConsPont.replace('.','').replace(',','.'), 
@@ -93,6 +90,7 @@ const app = new Vue({
 				},
 				
 			)
+			lancamentos.push(...this.encargos);
 			
 			const dados = {
 					dtIni: this.dtIni, 
@@ -147,7 +145,47 @@ const app = new Vue({
 			const resto = this.paginacao.total % this.paginacao.qtd;
 			this.paginacao.inicio = this.paginacao.total - ( resto === 0 ? this.paginacao.qtd : resto);
 			this.getFaturas();
-		}
+		},
+		adicionaEncargo(){
+			this.key += 1;
+			
+			this.encargos.push(
+				{
+					key: this.key,
+					deTipoLanc: this.encargo.deTipoLanc,
+					cdTipoLanc: this.encargo.cdTipoLanc,
+					vlLanc: this.vlLanc.replace('.','').replace(',','.'),
+				}
+			)
+		},
+		removeEncargo(key){
+			this.encargos = this.encargos.filter(encargo => {
+				return encargo.key != key
+					
+			});
+		},
+		abreIncluir(){
+			this.clear();
+			$('#incluir').modal('show')
+		},
+		
+		clear(){
+			this.aba= 'mesanoTab';
+			this.dtIni='';
+			this.dtFim='';
+			this.vlLanc= '';
+			this.vlLancConsPont= '';
+			this.vlLancConsForaPont= '';
+			this.vlLancTarifPont= '';
+			this.vlLancTarifForaPont= '';
+			this.vlLancDemPont='';
+			this.vlLancDemForaPont='';
+			this.vlLancDemContr='';
+			this.vlLancDemTari='';
+			this.encargos=[];
+			this.encargo=[];
+			this.key=0;
+		},
 		
 	}
 })

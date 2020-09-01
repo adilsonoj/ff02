@@ -13,7 +13,7 @@
     <div class="row">
       <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
         <h2 class="border-bottom pb-2">Fatura <span class="float-right float-md-right float-sm-right mt-1" data-toggle="tooltip" data-container="body" data-placement="top" title="Incluir" role="tooltip">
-          <button type="button" class="btn btn-primary btn-sm btn-toolbar" data-toggle="modal" data-target="#incluir" aria-expanded="true"> <i class="fas fa-plus"></i> </button>
+          <button type="button" class="btn btn-primary btn-sm btn-toolbar" @click="abreIncluir" aria-expanded="true"> <i class="fas fa-plus"></i> </button>
           </span> </h2>
       </div>
     </div>
@@ -229,25 +229,25 @@
                                     <tbody>
                                     <tr>
                                         <td>
-                                        	<select class="form-control form-control-sm" v-model="cdTipoLanc">
+                                        	<select class="form-control form-control-sm" v-model="encargo">
 	                                            <option disabled value="">Selecione...</option>
-	                                            <option v-for="tipo in tipoEncargo" :value="tipo.cdTipoLanc">{{tipo.deTipoLanc}}</option>
+	                                            <option v-for="tipo in tipoEncargo" :value="tipo">{{tipo.deTipoLanc}}</option>
                                         	</select>
                                         </td>
                                         <td>
                                         	<input type="text" v-model="vlLanc" class="form-control form-control-sm">
                                         </td>
                                         <td class="d-flex justify-content-center"><span data-toggle="tooltip" data-container="body" data-placement="top" title="" role="tooltip" data-original-title="Adicionar">
-                                          <button type="button" data-href="#" class="btn btn-success btn-sm btn-toolbar"><i class="fas fa-plus"></i></button>
+                                          <button type="button" @click="adicionaEncargo" class="btn btn-success btn-sm btn-toolbar"><i class="fas fa-plus"></i></button>
                                           </span></td>
                                       </tr>
-                                      <tr>
-                                        <td>Tipo do Encargo</td>
-                                        <td class="text-right">R$ 000.000,00</td>
+                                      <tr v-for="encargo in encargos">
+                                        <td>{{encargo.deTipoLanc}}</td>
+                                        <td class="text-right">R$ {{encargo.vlLanc}}</td>
                                         <td class="d-flex justify-content-center"><span data-toggle="tooltip" data-container="body" data-placement="top" title="" role="tooltip" data-original-title="Editar">
                                           <button type="button" data-href="#" class="btn btn-warning btn-sm btn-toolbar"><i class="fas fa-pencil-alt"></i></button>
                                           </span> &nbsp;<span data-toggle="tooltip" data-container="body" data-placement="top" title="Remover" role="tooltip">
-                                          <button type="button" data-href="#" class="btn btn-danger btn-sm btn-toolbar"><i class="fas fa-minus"></i></button>
+                                          <button type="button" @click="removeEncargo(encargo.key)" class="btn btn-danger btn-sm btn-toolbar"><i class="fas fa-minus"></i></button>
                                           </span></td>
                                       </tr>
                                       
