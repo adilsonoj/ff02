@@ -18,8 +18,10 @@ public class FaturaDao {
 	
 	public List<FaturaServico> listar(Paginacao paginacao){
 		String hql = "from FaturaServico c "
-				+ " join fetch c.modalidadeFatura m "
-				+ " join fetch m.tipoServico s "
+				+ "join fetch c.lancamentos "
+				+ "join fetch c.modalidadeFatura m "
+				+ "join fetch m.tipoServico s "
+				
 				+ "where "
 				+ "m.cdModlFatr =:codigoFatr and "
 				+ "s.cdTipoServ =:codigoServ";

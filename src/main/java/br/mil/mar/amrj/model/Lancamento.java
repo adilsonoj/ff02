@@ -1,5 +1,6 @@
 package br.mil.mar.amrj.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 import javax.persistence.Column;
@@ -14,11 +15,18 @@ import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @GenericGenerator(name = "FFSQ201", strategy = "sequence", parameters = {
 		@Parameter(name = "sequence", value = "FFSQ201") })
 @Table(name="FFVU_LANC")
-public class Lancamento {
+public class Lancamento implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="FFSQ201")
@@ -34,6 +42,7 @@ public class Lancamento {
 	
 	@ManyToOne
 	@JoinColumn(name="CD_FATR", referencedColumnName="CD_FATR")
+	@JsonIgnore
 	private FaturaServico faturaServico;
 
 	
