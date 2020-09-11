@@ -125,8 +125,8 @@ const app = new Vue({
 			})
 			.then(data => this.tipoEncargo = data)
 		},
-		proximo(){
-			this.paginacao.atual = this.paginacao.atual + 1;
+		proximo(){//3 traga 3    
+			this.paginacao.atual +=  1;
 			this.paginacao.inicio += this.paginacao.qtd;
 			this.getFaturas();
 		},

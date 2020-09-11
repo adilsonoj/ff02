@@ -7,7 +7,7 @@
     
     <div class="row text-center mt-3">
       <div class="col-md-12">
-        <h1>FF02 - GestÃ£o de Faturamento</h1>
+        <h1>FF02 - Gest&atilde;o de Faturamento</h1>
       </div>
     </div>
     <div class="row">
@@ -29,8 +29,8 @@
                       <th class="text-center" colspan="6">&nbsp;</th>
                     </tr>
                     <tr>
-                      <th class="col-md-1 text-center">MÃªs / Ano</th>
-                      <th class="col-md-1 text-center">ParÃ¢metro</th>
+                      <th class="col-md-1 text-center">M&ecirc;s / Ano</th>
+                      <th class="col-md-1 text-center">Par&acirc;metro</th>
                       <th class="col-md-1 text-center">Ponta</th>
                       <th class="col-md-1 text-center">Fora Ponta</th>
                       <th class="col-md-1 text-center">Ponta</th>
@@ -43,16 +43,18 @@
                   <tbody  v-for="fatura of faturas" :key="fatura.cdFatr">
                     <!--linha 1-->
                     <tr bgcolor="#f8f9fa">
-                      <td class="align-middle text-center" rowspan="3"><a href="#" data-toggle="modal" data-target="#mesano">{{fatura.cdFatr}}</a></td>
+                      <td class="align-middle text-center" rowspan="3"><a href="#" data-toggle="modal" data-target="#mesano">{{fatura.dtInic.monthValue}}/{{fatura.dtInic.year}}</a></td>
                     </tr>
-                    <tr bgcolor="#f8f9fa">
+                    <tr bgcolor="#f8f9fa" >
                       <td class="text-center align-middle"><a href="#" data-toggle="modal" data-target="#consumo">Consumo</a></td>
+                      
+                      <!-- <td  class="text-right align-middle" v-for="lanc of fatura.lancamentos" :key="lanc.cdLanc" v-if="lanc.tipoLancamento.cdTipoLanc == 1 || lanc.tipoLancamento.cdTipoLanc == 2 || lanc.tipoLancamento.cdTipoLanc == 3 || lanc.tipoLancamento.cdTipoLanc == 4">R$ {{lanc.vlLanc}}</td> -->
+ 					  <td class="text-right align-middle">R$ 000.000,00</td>
                       <td class="text-right align-middle">R$ 000.000,00</td>
                       <td class="text-right align-middle">R$ 000.000,00</td>
                       <td class="text-right align-middle">R$ 000.000,00</td>
-                      <td class="text-right align-middle">R$ 000.000,00</td>
-                      <td class="text-right align-middle" rowspan="2"><a href="#" data-toggle="modal" data-target="#encargos">R$ 000.000,00</a></td>
-                      <td class="text-right align-middle" rowspan="3">R$ 000.000,00</td>
+                      <td class="text-right align-middle" rowspan="2"><a href="#" data-toggle="modal" data-target="#encargos">R$ 000</a></td>
+                      <td class="text-right align-middle" rowspan="3">R$ 000</td>
                       <td class="text-center align-middle d-flex justify-content-center"><span data-toggle="tooltip" data-container="body" data-placement="top" title="" role="tooltip" data-original-title="Excluir"><button type="button" data-href="#" class="btn btn-danger btn-sm btn-toolbar" onclick="excluir()"> <i class="far fa-trash-alt"></i> </button>
 								</span></td>
                     </tr>
@@ -69,12 +71,32 @@
 			<div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1 offset-5">
                 <div  class="dataTables_paginate paging_full_numbers">
                     <ul class="pagination">
-                        <li class="paginate_button page-item first " :class="paginacao.atual == 1 ? 'disabled' : ''"><a @click="primeira" data-dt-idx="0" tabindex="0" class="page-link"><span aria-hidden="true">&laquo;</span></a></li>
-                        <li class="paginate_button page-item previous " :class="paginacao.atual == 1 ? 'disabled' : ''"><a @click="anterior" data-dt-idx="1" tabindex="0" class="page-link"><span aria-hidden="true">&lsaquo;
-                        </span></a></li>
-                        <li class="paginate_button page-item active" ><a href="#" data-dt-idx="2" tabindex="0" class="page-link">{{paginacao.atual}}</a></li>
-                        <li class="paginate_button page-item next " :class="paginacao.atual == paginacao.paginas  ? 'disabled' : ''"><a @click="proximo" data-dt-idx="3" tabindex="0" class="page-link"><span aria-hidden="true">&rsaquo;</span></a></li>
-                        <li class="paginate_button page-item last " :class="paginacao.atual == paginacao.paginas ? 'disabled' : ''"><a @click="ultima" data-dt-idx="4" tabindex="0" class="page-link"><span aria-hidden="true"> &raquo;</span></a></li>
+                        <li class="paginate_button page-item first " :class="paginacao.atual == 1 ? 'disabled' : ''">
+                        	<a @click="primeira" data-dt-idx="0" tabindex="0" class="page-link">
+                        		<span aria-hidden="true">&laquo;</span>
+                        	</a>
+                        </li>
+                        <li class="paginate_button page-item previous " :class="paginacao.atual == 1 ? 'disabled' : ''">
+                        	<a @click="anterior" data-dt-idx="1" tabindex="0" class="page-link">
+                        		<span aria-hidden="true">&lsaquo;</span>
+                        	</a>
+                        </li>
+                        <li class="paginate_button page-item active" >
+                        	<a href="#" data-dt-idx="2" tabindex="0" class="page-link">{{paginacao.atual}}</a>
+                        </li>
+                        <li class="paginate_button page-item active" >
+                        	<a href="#" data-dt-idx="2" tabindex="0" class="page-link">{{paginacao.paginas}}</a>
+                        </li>
+                        <li class="paginate_button page-item next " :class="paginacao.atual == paginacao.paginas  ? 'disabled' : ''">
+                        	<a @click="proximo" data-dt-idx="3" tabindex="0" class="page-link">
+                        		<span aria-hidden="true">&rsaquo;</span>
+                        	</a>
+                        </li>
+                        <li class="paginate_button page-item last " :class="paginacao.atual == paginacao.paginas ? 'disabled' : ''">
+                        	<a @click="ultima" data-dt-idx="4" tabindex="0" class="page-link">
+                        		<span aria-hidden="true"> &raquo;</span>
+                        	</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -94,7 +116,7 @@
                     </div>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#">FF02 - GestÃ£o de Faturamento</a></li>
+                            <li class="breadcrumb-item"><a href="#">FF02 - Gest&atilde;o de Faturamento</a></li>
                             <li class="breadcrumb-item"><a href="#">Fatura</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Incluir</li>
                         </ol>
@@ -102,7 +124,7 @@
                     <div class="modal-body">
                     	<ul class="nav nav-tabs">
                           <li class="nav-item">
-                            <a class="nav-link" :class="aba == 'mesanoTab' ? 'active' : ''" @click="aba = 'mesanoTab'">MÃªs / Ano</a>
+                            <a class="nav-link" :class="aba == 'mesanoTab' ? 'active' : ''" @click="aba = 'mesanoTab'">M&ecirc;s / Ano</a>
                           </li>
                           <li class="nav-item">
                             <a class="nav-link" :class="aba == 'consumoTab' ? 'active' : ''" @click="aba = 'consumoTab'">Consumo</a>
@@ -121,10 +143,10 @@
                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                     <div class="form-group">
                                         <div class="input-group">
-                                            <div class="input-group-prepend"> <span class="input-group-text">PerÃ­odo</span> </div>
-                                            <input type="text" class="form-control text-center" placeholder="00/0000" v-model="dtIni" required/>
+                                            <div class="input-group-prepend"> <span class="input-group-text">Per&iacute;odo</span> </div>
+                                            <input type="text" class="form-control text-center" v-mask="'##/##/####'" placeholder="00/00/0000" v-model="dtIni" required/>
                                             <div class="input-group-prepend"> <span class="input-group-text">a</span> </div>
-                                            <input type="text" class="form-control text-center" placeholder="00/0000" v-model="dtFim" required/>
+                                            <input type="text" class="form-control text-center" v-mask="'##/##/####'" placeholder="00/00/0000" v-model="dtFim" required/>
                                         </div>
                                     </div>
                                 </div>
@@ -275,9 +297,9 @@
                     </div>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#">FF02 - GestÃ£o de Faturamento</a></li>
+                            <li class="breadcrumb-item"><a href="#">FF02 - Gest&atilde;o de Faturamento</a></li>
                             <li class="breadcrumb-item"><a href="#">Fatura</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">MÃªs / Ano</li>
+                            <li class="breadcrumb-item active" aria-current="page">M&ecirc;s / Ano</li>
                         </ol>
                     </nav>
                     <div class="modal-body">
@@ -285,7 +307,7 @@
                             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3">
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <div class="input-group-prepend"> <span class="input-group-text">MÃªs / Ano</span> </div>
+                                        <div class="input-group-prepend"> <span class="input-group-text">M&ecirc;s / Ano</span> </div>
                                         <input type="text" class="form-control text-center" placeholder="00/0000"/>
                                     </div>
                                 </div>
@@ -293,7 +315,7 @@
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <div class="input-group-prepend"> <span class="input-group-text">PerÃ­odo</span> </div>
+                                        <div class="input-group-prepend"> <span class="input-group-text">Per&iacute;­odo</span> </div>
                                         <input type="text" class="form-control text-center" placeholder="00/0000"/>
                                         <div class="input-group-prepend"> <span class="input-group-text">a</span> </div>
                                         <input type="text" class="form-control text-center" placeholder="00/0000"/>
@@ -322,7 +344,7 @@
                     </div>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#">FF02 - GestÃ£o de Faturamento</a></li>
+                            <li class="breadcrumb-item"><a href="#">FF02 - Gest&atilde;o de Faturamento</a></li>
                             <li class="breadcrumb-item"><a href="#">Fatura</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Consumo CNIC</li>
                         </ol>
@@ -389,7 +411,7 @@
                     </div>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#">FF02 - GestÃ£o de Faturamento</a></li>
+                            <li class="breadcrumb-item"><a href="#">FF02 - Gest&atilde;o de Faturamento</a></li>
                             <li class="breadcrumb-item"><a href="#">Fatura</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Demanda</li>
                         </ol>
@@ -450,7 +472,7 @@
             </div>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">FF02 - GestÃ£o de Faturamento</a></li>
+                    <li class="breadcrumb-item"><a href="#">FF02 - Gest&atilde;o de Faturamento</a></li>
                     <li class="breadcrumb-item"><a href="#">Fatura</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Encargos</li>
                 </ol>
