@@ -72,7 +72,7 @@ __Descrição__: Determina o valor da medida realizada, para se auferir o consum
 | Campo | Tipo | Restrição de Domínio | Descrição | Unique | Not Null |
 | --- | --- | --- | --- | --- | --- |
 | CD_MDDA_CONS | NUMERIC(8) | PK implementada com sequence FFSQ202 | Chave  | Sim | Sim |
-| CD_UNID_CONS | NUMERIC(8) | FK para tabela FFVU_CLIE | Determina OM responsável pela UC (prédio, navio etc.) | Não | Não |
+| CD_UNID_CONS | NUMERIC(8) | FK para tabela FFVU_UNID_CONS | Determina OM responsável pela UC (prédio, navio etc.) | Não | Não |
 | CD_TIPO_CONS | NUMERIC(8) | | | | |
 | VL_MDDA_CONS | NUMERIC(10, 2) | | Valor da medida do consumo | Não | Sim |
 | DT_MDDA_CONS | DATE | | Data na qual o consumo foi levantado | Não | Sim |
