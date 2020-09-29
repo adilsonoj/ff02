@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
+
 @Table(name="FFVU_TIPO_LANC")
 public class TipoLancamento implements Serializable{
 	
@@ -22,6 +23,10 @@ public class TipoLancamento implements Serializable{
 	
 	@Column(name="DE_TIPO_LANC")
 	private String deTipoLanc;
+	
+	@Column(name="LG_ENCG")
+	private char lgEncg;
+
 
 	public Integer getCdTipoLanc() {
 		return cdTipoLanc;
@@ -38,6 +43,17 @@ public class TipoLancamento implements Serializable{
 	public void setDeTipoLanc(String deTipoLanc) {
 		this.deTipoLanc = deTipoLanc;
 	}
+
+	public char getLgEncg() {
+		return lgEncg;
+	}
+
+	public void setLgEncg(char lgEncg) {
+		this.lgEncg = lgEncg;
+	}
+
+	
+	
 	
 	
 

@@ -17,8 +17,10 @@ public class LancamentoDAO {
 	EntityManager em;
 	
 	public List<TipoLancamento> listarEncargos() {	
-		List<TipoLancamento> lista = em.createQuery("from TipoLancamento t", TipoLancamento.class)											
-										.getResultList();		
+		List<TipoLancamento> lista = em.createQuery("from TipoLancamento t "
+				+ "where t.lgEncg =:lgEncg", TipoLancamento.class)
+				.setParameter("lgEncg", 'S')
+				.getResultList();		
 		return lista;
 	}
 
