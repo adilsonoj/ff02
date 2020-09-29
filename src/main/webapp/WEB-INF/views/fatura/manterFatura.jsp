@@ -49,13 +49,10 @@
                       <td class="text-center align-middle"><a href="#" data-toggle="modal" data-target="#consumo">Consumo</a></td>
                       
                       <td  class="text-right align-middle" v-for="lanc of fatura.lancamentos" :key="lanc.cdLanc" v-if="lanc.tipoLancamento.cdTipoLanc == 1 || lanc.tipoLancamento.cdTipoLanc == 2 || lanc.tipoLancamento.cdTipoLanc == 3 || lanc.tipoLancamento.cdTipoLanc == 4">R$ {{lanc.vlLanc}}</td>
-<!--  					  <td class="text-right align-middle">R$ 000.000,00</td> -->
-<!--                       <td class="text-right align-middle">R$ 000.000,00</td> -->
-<!--                       <td class="text-right align-middle">R$ 000.000,00</td> -->
-<!--                       <td class="text-right align-middle">R$ 000.000,00</td> -->
+
                       <td class="text-right align-middle" rowspan="2"><a href="#" data-toggle="modal" data-target="#encargos">R$ 000</a></td>
                       <td class="text-right align-middle" rowspan="3">R$ 000</td>
-                      <td class="text-center align-middle d-flex justify-content-center"><span data-toggle="tooltip" data-container="body" data-placement="top" title="" role="tooltip" data-original-title="Excluir"><button type="button" data-href="#" class="btn btn-danger btn-sm btn-toolbar" onclick="excluir()"> <i class="far fa-trash-alt"></i> </button>
+                      <td class="text-center align-middle d-flex justify-content-center"><span datotata-toggle="tooltip" data-container="body" data-placement="top" title="" role="tooltip" data-original-title="Excluir"><button type="button" data-href="#" class="btn btn-danger btn-sm btn-toolbar" onclick="excluir()"> <i class="far fa-trash-alt"></i> </button>
 								</span></td>
                     </tr>
                     <tr bgcolor="#f8f9fa">
