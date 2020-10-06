@@ -109,6 +109,11 @@ const app = new Vue({
 					.then(resp => {
 						//if(resp.ok) 
 							return resp.json();
+							
+							this.getFaturas();
+							$('#incluir').modal('hide')
+							
+							swal("Sucesso",'Operação realizada com sucesso!', "success")	
 					})
 					.then(data => {
 						if(data.error){
@@ -118,6 +123,7 @@ const app = new Vue({
 					})
 					.catch(err => console.error("Aconteceu um erro:",err))
 		},
+		
 		getTipoEncargos(){
 			fetch('listarEncargos')
 			.then(resp => {
@@ -185,6 +191,14 @@ const app = new Vue({
 			this.encargos=[];
 			this.encargo=[];
 			this.key=0;
+		},
+		
+		somaEncargos(fatura){
+			return fatura.lancamentos.reduce((acc, value)=>{
+				  if(value.tipoLancamento.lgEncg == 'S'){
+					  return acc + parseFloat(value.vlLanc)
+				  }
+				},0)
 		},
 		
 	}

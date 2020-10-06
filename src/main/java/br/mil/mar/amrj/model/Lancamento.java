@@ -41,7 +41,7 @@ public class Lancamento implements Serializable{
 	private TipoLancamento tipoLancamento;
 	
 	@ManyToOne
-	@JoinColumn(name="CD_FATR", referencedColumnName="CD_FATR")
+	@JoinColumn(name="CD_FATR_SERV", referencedColumnName="CD_FATR_SERV")
 	@JsonIgnore
 	private FaturaServico faturaServico;
 

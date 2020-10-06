@@ -5,6 +5,8 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -26,6 +28,11 @@ public class TipoLancamento implements Serializable{
 	
 	@Column(name="LG_ENCG")
 	private char lgEncg;
+	
+
+	@ManyToOne
+	@JoinColumn(name="CD_MODL_FATR", referencedColumnName="CD_MODL_FATR")
+	private ModalidadeFatura modalidadeFatura;
 
 
 	public Integer getCdTipoLanc() {
@@ -51,6 +58,16 @@ public class TipoLancamento implements Serializable{
 	public void setLgEncg(char lgEncg) {
 		this.lgEncg = lgEncg;
 	}
+
+	public ModalidadeFatura getModalidadeFatura() {
+		return modalidadeFatura;
+	}
+
+	public void setModalidadeFatura(ModalidadeFatura modalidadeFatura) {
+		this.modalidadeFatura = modalidadeFatura;
+	}
+
+
 
 	
 	

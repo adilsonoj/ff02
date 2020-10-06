@@ -29,12 +29,15 @@ public class FaturaServico implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="FFSQ200")
-	@Column(name="CD_FATR")
+	@Column(name="CD_FATR_SERV")
 	private Integer cdFatr;
 	@Column(name="DT_INIC")
 	private LocalDate dtInic;
 	@Column(name="DT_FIM")
 	private LocalDate dtFim;
+	@Column(name="LG_ATIV")
+	private char lgAtiv;
+	
 	
 	@ManyToOne
 	@JoinColumn(name="CD_MODL_FATR", referencedColumnName="CD_MODL_FATR")
@@ -44,10 +47,6 @@ public class FaturaServico implements Serializable{
 	
 	private List<Lancamento> lancamentos;
 
-	
-	
-	
-	
 
 	public FaturaServico(Integer cdFatr, LocalDate dtInic, LocalDate dtFim, ModalidadeFatura modalidadeFatura,
 			List<Lancamento> lancamentos) {
@@ -107,4 +106,12 @@ public class FaturaServico implements Serializable{
 		this.lancamentos = lancamentos;
 	}
 
+	public char getLgAtiv() {
+		return lgAtiv;
+	}
+
+	public void setLgAtiv(char lgAtiv) {
+		this.lgAtiv = lgAtiv;
+	}
+	
 }
