@@ -63,6 +63,9 @@ public class FaturaDao {
 		manager.persist(fatura);
 	}
 	
+	public void delete(FaturaServico fatura) {
+		((FaturaDao) manager).delete(fatura);
+	}
 	/*
 	 * SELECT f.* FROM FFVU_FATR f 
 	 * INNER JOIN FFVU_MODL_FATR m ON m.CD_MODL_FATR = f.CD_MODL_FATR 

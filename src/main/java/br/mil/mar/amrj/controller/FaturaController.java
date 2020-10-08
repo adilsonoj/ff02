@@ -58,6 +58,13 @@ public class FaturaController {
 		
 	}
 	
+	@RequestMapping(value = "/excluirFatura", method = RequestMethod.POST)
+	public HttpStatus excluirFatura(@RequestBody FaturaDto dto){
+		faturaService.delete(dto);
+		return HttpStatus.OK;
+		
+	}
+	
 	@RequestMapping(value = "/listarEncargos", method = RequestMethod.GET)
 	@ResponseBody
 	public ResponseEntity<List<TipoLancamento>> listarEncargos(){

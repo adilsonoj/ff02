@@ -72,6 +72,39 @@ public class FaturaService {
 		
 	}
 	
+	@Transactional
+	public void delete(FaturaDto dto) {
+		FaturaServico fatura = new FaturaServico();
+		
+		//FATURA
+		
+		ModalidadeFatura  modalidade = new ModalidadeFatura();
+		modalidade.setCdModlFatr(1);
+		
+		fatura.setModalidadeFatura(modalidade);
+		faturaDao.delete(fatura);
+		
+		//LANCAMENTOS
+				List<LancamentoDto> lancamentos = dto.getLancamentos();
+				
+				for (LancamentoDto lancamentoDto : lancamentos) {
+					
+					if(lancamentoDto.getCdTipoLanc() == null) 
+						continue;
+					
+						
+					TipoLancamento tipoLancamento = new TipoLancamento();
+					tipoLancamento.setCdTipoLanc(lancamentoDto.getCdTipoLanc());
+					
+					Lancamento lancamento = new Lancamento();		
+					
+					lancamento.setVlLanc(lancamentoDto.getVlLanc());
+					lancamento.setTipoLancamento(tipoLancamento);
+					lancamento.setFaturaServico(fatura);
+					lancamentoDAO.delete(lancamento);
+				}
+	}
+	
 	public LocalDate parseLocalDate(String data) {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		LocalDate localDate = LocalDate.parse(data, formatter);

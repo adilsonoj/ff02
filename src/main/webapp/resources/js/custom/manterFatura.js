@@ -1,6 +1,7 @@
 const app = new Vue({
 	el:"#app",
 	data: {
+		cdFatr:'',
 		faturas: [],
 		aba: 'mesanoTab',
 		dtIni:'',
@@ -122,6 +123,45 @@ const app = new Vue({
 						console.log(data)
 					})
 					.catch(err => console.error("Aconteceu um erro:",err))
+		},
+		
+		excluirFatura(cdFatr){
+			swal({
+        		title: 'Tem certeza?',
+                text: "Não será possível desfazer a ação!",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sim, exclua!',
+                cancelButtonText: 'Não, cancele!',
+                confirmButtonClass: 'btn btn-success',
+                cancelButtonClass: 'btn btn-danger',
+                buttonsStyling: false
+			    }).then(resp => {
+			    	$.post("excluirFatura", {
+						"fatura.cdFatr":cdFatr
+					}).done(response=>{
+						console.log(response)
+						if(response.error){
+							swal('Erro!','Este grupo não pode ser excluído pois está associada ao cadastro de DCI de Requisição.','error')    
+							return
+						}else{
+							this.carregarCadastros();
+							swal('Excluido!','A exclusão foi realizada com sucesso!','success')
+						}
+						
+							
+							 
+							
+					})
+					
+					
+					
+		    })
+			
+			    
+			
 		},
 		
 		getTipoEncargos(){

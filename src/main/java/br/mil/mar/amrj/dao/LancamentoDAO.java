@@ -27,5 +27,9 @@ public class LancamentoDAO {
 	public void persist(Lancamento lancamento) {
 		em.persist(lancamento);		
 	}
+	
+	public void delete(Lancamento lancamento) {
+		((LancamentoDAO) em).delete(lancamento);		
+	}
 
 }

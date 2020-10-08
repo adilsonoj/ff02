@@ -52,7 +52,8 @@
 
                       <td class="text-right align-middle" rowspan="2"><a href="#" data-toggle="modal" data-target="#encargos">R$ {{somaEncargos(fatura)}}</a></td>
                       <td class="text-right align-middle" rowspan="3">R$ 000</td>
-                      <td class="text-center align-middle d-flex justify-content-center"><span datotata-toggle="tooltip" data-container="body" data-placement="top" title="" role="tooltip" data-original-title="Excluir"><button type="button" data-href="#" class="btn btn-danger btn-sm btn-toolbar" onclick="excluir()"> <i class="far fa-trash-alt"></i> </button>
+                      <td class="text-center align-middle d-flex justify-content-center"><span datotata-toggle="tooltip" data-container="body" data-placement="top" title="" role="tooltip" data-original-title="Excluir"><button type="button" data-href="#" class="btn btn-danger btn-sm btn-toolbar"  onclick="app.excluirFatura('\${row.
+}')"> <i class="far fa-trash-alt"></i> </button>
 								</span></td>
                     </tr>
                     <tr bgcolor="#f8f9fa">
