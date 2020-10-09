@@ -113,5 +113,7 @@ public class FaturaServico implements Serializable{
 	public void setLgAtiv(char lgAtiv) {
 		this.lgAtiv = lgAtiv;
 	}
+
+
 	
 }

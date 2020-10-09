@@ -4,7 +4,7 @@ const app = new Vue({
 		cdFatr:'',
 		faturas: [],
 		aba: 'mesanoTab',
-		dtIni:'',
+		dtInic:'',
 		dtFim:'',
 		tipoEncargo: [],
 		vlLanc: '',
@@ -31,6 +31,8 @@ const app = new Vue({
 		this.getFaturas();
 		this.getTipoEncargos();
 		
+	
+		
 	},
 	methods:{
 		getFaturas(){
@@ -52,6 +54,8 @@ const app = new Vue({
 				this.paginacao.paginas = Math.ceil(this.paginacao.total / this.paginacao.qtd);
 			})
 		},
+		
+		
 		inclui(){
 			
 			const lancamentos = [];
@@ -94,7 +98,7 @@ const app = new Vue({
 			lancamentos.push(...this.encargos);
 			
 			const dados = {
-					dtIni: this.dtIni, 
+					dtInic: this.dtInic, 
 					dtFim: this.dtFim,
 					lancamentos: lancamentos,
 			}
@@ -106,23 +110,36 @@ const app = new Vue({
 				    },
 					body: JSON.stringify(dados)
 				}
-			fetch('inclui',conf)
+			fetch('inclui', conf)
 					.then(resp => {
-						//if(resp.ok) 
+						
+						console.log("salvar");
+						
 							return resp.json();
 							
-							this.getFaturas();
-							$('#incluir').modal('hide')
-							
-							swal("Sucesso",'Operação realizada com sucesso!', "success")	
 					})
 					.then(data => {
-						if(data.error){
-							throw new Error(data.msg)
-						}
+						
 						console.log(data)
+						
+						if(data.error){
+								swal("Atenção",'A operação não foi realizada!', "warning")
+								
+						}else{
+							
+							this.getFaturas();
+							
+							$('#incluir').modal('hide')
+							
+							
+							swal("Sucesso",'Operação realizada com sucesso!', "success")
+						}
+								
+						
 					})
 					.catch(err => console.error("Aconteceu um erro:",err))
+					
+					
 		},
 		
 		excluirFatura(cdFatr){
@@ -151,17 +168,9 @@ const app = new Vue({
 							swal('Excluido!','A exclusão foi realizada com sucesso!','success')
 						}
 						
-							
-							 
-							
 					})
 					
-					
-					
 		    })
-			
-			    
-			
 		},
 		
 		getTipoEncargos(){
@@ -171,6 +180,9 @@ const app = new Vue({
 			})
 			.then(data => this.tipoEncargo = data)
 		},
+		
+		
+
 		proximo(){//3 traga 3    
 			this.paginacao.atual +=  1;
 			this.paginacao.inicio += this.paginacao.qtd;
@@ -217,7 +229,7 @@ const app = new Vue({
 		
 		clear(){
 			this.aba= 'mesanoTab';
-			this.dtIni='';
+			this.dtInic='';
 			this.dtFim='';
 			this.vlLanc= '';
 			this.vlLancConsPont= '';
@@ -240,6 +252,56 @@ const app = new Vue({
 				  }
 				},0)
 		},
+		
+		
+		modalEditarData(dtInic, dtFim){
+			
+			this.dtInic = dtInic
+			this.dtFim = dtFim
+			
+			$('#mesano').modal('show');
+			
+			
+		},
+		editarData(){
+			console.log("editarData")
+			
+			
+			swal({
+			  	title: 'Tem certeza?',
+				text: 'Confirme os dados antes de editar!',
+				type: 'warning',
+				showCancelButton: true,
+				confirmButtonText: 'Sim, Editar!',
+				cancelButtonText: 'Não, Cancelar!',
+				confirmButtonClass: 'btn btn-outline-success',
+				cancelButtonClass: 'btn btn-outline-danger',
+				buttonsStyling: false
+		}).then((result) => {
+			
+				 let editarData = new FormData()
+			     editarData =  ('dtInic', this.dtIni)
+				 editarData = ('dtFim', this.dtFim)
+				 editarData = ('aba', this.aba)
+		
+			axios.post('editarData', editarData).then(resp =>{
+				
+				if(resp.data) {
+					 	swal('Salvo!','A edição foi realizada com sucesso!','success')
+						this.getFaturas();
+						$('#editarData').modal('hide')
+				}else{
+					
+						 swal('Cancelado','Nenhuma edição foi realizada.','error')
+						 $('#editarData').modal('hide')
+					}
+				})
+			})
+				
+			
+		},
+		
+	 
 		
 	}
 })

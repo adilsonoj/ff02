@@ -7,6 +7,7 @@ public class FaturaDto {
 	private String dtIni;
 	private String dtFim;
 	
+	
 	private List<LancamentoDto> lancamentos;
 	
 	
@@ -29,4 +30,6 @@ public class FaturaDto {
 		this.lancamentos = lancamentos;
 	}
 
+	
+	
 }

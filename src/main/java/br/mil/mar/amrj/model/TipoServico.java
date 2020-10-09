@@ -20,7 +20,7 @@ public class TipoServico implements Serializable{
 	@Column(name="CD_TIPO_SERV")
 	private Integer cdTipoServ;
 	
-	@Column(name="DE_TIPO_FATR")
+	@Column(name="DE_TIPO_SERV")
 	private String deTipoServ;
 
 	public Integer getCdTipoServ() {

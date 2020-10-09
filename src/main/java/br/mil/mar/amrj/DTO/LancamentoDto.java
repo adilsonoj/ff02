@@ -8,6 +8,7 @@ public class LancamentoDto {
 	private Integer cdTipoLanc;
 	private char lgEncg;
 	
+	
 	public BigDecimal getVlLanc() {
 		return vlLanc;
 	}
