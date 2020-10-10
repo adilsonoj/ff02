@@ -58,6 +58,12 @@ public class FaturaDao {
 		 
 		return lista;
 	}
+	
+	public FaturaServico getFatura(Integer cdFatr) {
+		String hql = "from FaturaServico c where c.cdFatr =:cdFatr";
+		
+		return manager.createQuery(hql, FaturaServico.class).setParameter("cdFatr", cdFatr).getSingleResult();
+	}
 
 	public void persist(FaturaServico fatura) {
 		manager.persist(fatura);

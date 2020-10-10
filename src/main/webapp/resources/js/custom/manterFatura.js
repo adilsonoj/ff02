@@ -111,31 +111,15 @@ const app = new Vue({
 					body: JSON.stringify(dados)
 				}
 			fetch('inclui', conf)
-					.then(resp => {
-						
-						console.log("salvar");
-						
-							return resp.json();
-							
-					})
+					.then(resp => resp.json() )
 					.then(data => {
-						
-						console.log(data)
-						
 						if(data.error){
 								swal("Atenção",'A operação não foi realizada!', "warning")
-								
 						}else{
-							
 							this.getFaturas();
-							
 							$('#incluir').modal('hide')
-							
-							
 							swal("Sucesso",'Operação realizada com sucesso!', "success")
 						}
-								
-						
 					})
 					.catch(err => console.error("Aconteceu um erro:",err))
 					
@@ -246,18 +230,16 @@ const app = new Vue({
 		},
 		
 		somaEncargos(fatura){
-			return fatura.lancamentos.reduce((acc, value)=>{
-				  if(value.tipoLancamento.lgEncg == 'S'){
-					  return acc + parseFloat(value.vlLanc)
-				  }
-				},0)
+			return fatura.lancamentos.reduce((acc, item)=>{
+				   return item.tipoLancamento.lgEncg === 'S' ? acc += item.vlLanc : acc += 0;
+                },0)
 		},
 		
 		
-		modalEditarData(dtInic, dtFim){
-			
-			this.dtInic = dtInic
-			this.dtFim = dtFim
+		modalEditarData(dtInic, dtFim, cdFatr){
+			this.dtInic = this.dataParaString(dtInic);
+			this.dtFim = this.dataParaString(dtFim);
+			this.cdFatr = cdFatr;
 			
 			$('#mesano').modal('show');
 			
@@ -279,29 +261,50 @@ const app = new Vue({
 				buttonsStyling: false
 		}).then((result) => {
 			
-				 let editarData = new FormData()
-			     editarData =  ('dtInic', this.dtIni)
-				 editarData = ('dtFim', this.dtFim)
-				 editarData = ('aba', this.aba)
-		
-			axios.post('editarData', editarData).then(resp =>{
+			 let editarData = {
+				cdFatr: this.cdFatr,
+				dtInic: this.dtInic,
+				dtFim: this.dtFim
+			}
 				
-				if(resp.data) {
-					 	swal('Salvo!','A edição foi realizada com sucesso!','success')
-						this.getFaturas();
-						$('#editarData').modal('hide')
+			
+			const conf = {
+					method: 'POST',
+					headers: {
+					      'Accept': 'application/json',
+					      'Content-Type': 'application/json'
+				    },
+					body: JSON.stringify(editarData)
+				}
+		
+			fetch('editarData', conf)
+			.then(resp => resp.json())
+			.then(data=>{
+				console.log(data.error)
+				if(data.error) {
+				 	swal('Cancelado','Nenhuma edição foi realizada.','error')
+					$('#mesano').modal('hide')
 				}else{
-					
-						 swal('Cancelado','Nenhuma edição foi realizada.','error')
-						 $('#editarData').modal('hide')
-					}
-				})
+					swal('Salvo!','A edição foi realizada com sucesso!','success')
+					this.getFaturas();
+					$('#mesano').modal('hide')
+				}
 			})
+		})
 				
 			
 		},
+		dataParaString(data){
+			return moment(`${data.dayOfMonth}/${data.monthValue}/${data.year}`, 'DD/MM/YYYY').format('DD/MM/YYYY')
+		}
 		
-	 
+	 	
+	},
+	computed:{
 		
 	}
+		
+	
+	
+	
 })

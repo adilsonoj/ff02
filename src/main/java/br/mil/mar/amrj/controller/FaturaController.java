@@ -52,10 +52,8 @@ public class FaturaController {
 	}
 	
 	@RequestMapping(value = "/incluir", method = RequestMethod.POST)
-	public HttpStatus incluir(@RequestBody FaturaDto dto){
+	public void incluir(@RequestBody FaturaDto dto){
 		faturaService.persist(dto);
-		return HttpStatus.OK;
-		
 	}
 	
 	
@@ -67,11 +65,8 @@ public class FaturaController {
 	
 	@RequestMapping(value ="/editarData", method = RequestMethod.POST)
 	@ResponseBody
-	public ResponseEntity<FaturaServico> editarData(FaturaServico faturaServico){
-		
-		 FaturaServico faturaServicoEditData = faturaService.editarData(faturaServico);
-		 return ResponseEntity.ok(faturaServicoEditData);
-		
+	public void editarData(@RequestBody FaturaDto dto){
+		faturaService.editarData(dto);
 	}
 	
 }

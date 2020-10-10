@@ -42,7 +42,7 @@ public class FaturaService {
 		fatura.setLgAtiv('S');
 		
 		//FATURA
-		fatura.setDtInic(parseLocalDate(dto.getDtIni()));
+		fatura.setDtInic(parseLocalDate(dto.getDtInic()));
 		fatura.setDtFim(parseLocalDate(dto.getDtFim()));
 		
 		
@@ -75,8 +75,10 @@ public class FaturaService {
 	}
 	
 	@Transactional
-	public FaturaServico editarData(FaturaServico faturaServico) {
-		return faturaDao.editarData(faturaServico);	
+	public void editarData(FaturaDto dto) {
+		FaturaServico fatura = faturaDao.getFatura(dto.getCdFatr());
+		fatura.setDtInic(parseLocalDate(dto.getDtInic()));
+		fatura.setDtFim(parseLocalDate(dto.getDtFim()));
 	}
 	
 

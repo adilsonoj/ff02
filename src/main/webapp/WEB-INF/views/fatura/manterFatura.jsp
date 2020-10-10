@@ -43,15 +43,15 @@
                   <tbody  v-for="fatura of faturas" :key="fatura.cdFatr">
                     <!--linha 1-->
                     <tr bgcolor="#f8f9fa">
-                      <td class="align-middle text-center" rowspan="3"><a href="#" @click="modalEditarData(fatura.dtInic, fatura.dtFim)">{{fatura.dtInic.monthValue}}/{{fatura.dtInic.year}}</a></td>
+                      <td class="align-middle text-center" rowspan="3"><a href="#" @click="modalEditarData(fatura.dtInic, fatura.dtFim, fatura.cdFatr)">{{fatura.dtInic.monthValue}}/{{fatura.dtInic.year}}</a></td>
                     </tr>
                     <tr bgcolor="#f8f9fa" >
                       <td class="text-center align-middle"><a href="#" data-toggle="modal" data-target="#consumo">Consumo</a></td>
                       
                       <td  class="text-right align-middle" v-for="lanc of fatura.lancamentos" :key="lanc.cdLanc" v-if="lanc.tipoLancamento.cdTipoLanc == 1 || lanc.tipoLancamento.cdTipoLanc == 2 || lanc.tipoLancamento.cdTipoLanc == 3 || lanc.tipoLancamento.cdTipoLanc == 4">R$ {{lanc.vlLanc}}</td>
 
-                      <td class="text-right align-middle" rowspan="2"><a href="#" data-toggle="modal" data-target="#encargos">R$ {{somaEncargos(fatura)}}</a></td>
-                      <td class="text-right align-middle" rowspan="3">R$ 000</td>
+                      <td class="text-center align-middle" rowspan="2"><a href="#" data-toggle="modal" data-target="#encargos">R$ {{somaEncargos(fatura)}}</a></td>
+                      <td class="text-center align-middle" rowspan="3">R$ 000</td>
 <!--                       <td class="text-center align-middle d-flex justify-content-center"><span datotata-toggle="tooltip" data-container="body" data-placement="top" title="" role="tooltip" data-original-title="Excluir"><button type="button" data-href="#" class="btn btn-danger btn-sm btn-toolbar"  -->
 <!--                        onclick="app.excluirFatura('\${fatura.cdFatr}')"> <i class="far fa-trash-alt"></i> </button> -->
 <!-- 								</span></td> -->
@@ -302,15 +302,8 @@
                     </nav>
                     <div class="modal-body">
                         <div class="form-row mt-3">
-                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3">
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <div class="input-group-prepend"> <span class="input-group-text">M&ecirc;s / Ano</span> </div>
-                                        <input type="text" class="form-control text-center" placeholder="00/0000"/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
+                            
+                            <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-9">
                                 <div class="form-group">
                                     <div class="input-group">
                                         <div class="input-group-prepend"> <span class="input-group-text">Per&iacute;­odo</span> </div>
@@ -324,7 +317,7 @@
                          </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-sm btn-secondary" @Click="editarData()">Salvar</button>
+                        <button type="submit" class="btn btn-sm btn-secondary" >Salvar</button>
                     </div>
                 </div>
                 <!-- /.modal-content --> 
