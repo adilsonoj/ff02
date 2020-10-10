@@ -88,6 +88,38 @@ public class FaturaService {
 		
 		return localDate;
 	}
+
+	@Transactional
+	public void editaEncargos(FaturaDto dto) {
+		dto.getLancamentos().forEach(item -> {
+			if(item.getCdLanc() != null) {
+				TipoLancamento tipoLancamento = new TipoLancamento();
+				tipoLancamento.setCdTipoLanc(item.getCdTipoLanc());
+				
+				Lancamento lancamento = lancamentoDAO.getLancamento(item.getCdLanc());
+				lancamento.setTipoLancamento(tipoLancamento);
+				lancamento.setVlLanc(item.getVlLanc());
+			}else {
+				Lancamento lancamento = new Lancamento();		
+				
+				lancamento.setVlLanc(item.getVlLanc());
+				TipoLancamento tipoLancamento = new TipoLancamento();
+				tipoLancamento.setCdTipoLanc(item.getCdTipoLanc());
+				lancamento.setTipoLancamento(tipoLancamento);
+				FaturaServico fatura = new FaturaServico();
+				fatura.setCdFatr(dto.getCdFatr());
+				lancamento.setFaturaServico(fatura);
+				lancamentoDAO.persist(lancamento);
+			}
+		});
+		
+	}
+	@Transactional
+	public void deleteEncargo(Integer cdLanc) {
+		Lancamento lancamento = lancamentoDAO.getLancamento(cdLanc);
+		lancamentoDAO.delete(lancamento);;
+		
+	}
 	
 	
 	

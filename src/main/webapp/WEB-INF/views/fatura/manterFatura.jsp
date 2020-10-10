@@ -50,8 +50,8 @@
                       
                       <td  class="text-right align-middle" v-for="lanc of fatura.lancamentos" :key="lanc.cdLanc" v-if="lanc.tipoLancamento.cdTipoLanc == 1 || lanc.tipoLancamento.cdTipoLanc == 2 || lanc.tipoLancamento.cdTipoLanc == 3 || lanc.tipoLancamento.cdTipoLanc == 4">R$ {{lanc.vlLanc}}</td>
 
-                      <td class="text-center align-middle" rowspan="2"><a href="#" data-toggle="modal" data-target="#encargos">R$ {{somaEncargos(fatura)}}</a></td>
-                      <td class="text-center align-middle" rowspan="3">R$ 000</td>
+                      <td class="text-center align-middle" rowspan="2"><a href="#" @click="modalEditaEncargos(fatura.cdFatr)">R$ {{somaEncargos(fatura)}}</a></td>
+                      <td class="text-center align-middle" rowspan="3">R$ {{total(fatura)}}</td>
 <!--                       <td class="text-center align-middle d-flex justify-content-center"><span datotata-toggle="tooltip" data-container="body" data-placement="top" title="" role="tooltip" data-original-title="Excluir"><button type="button" data-href="#" class="btn btn-danger btn-sm btn-toolbar"  -->
 <!--                        onclick="app.excluirFatura('\${fatura.cdFatr}')"> <i class="far fa-trash-alt"></i> </button> -->
 <!-- 								</span></td> -->
@@ -454,7 +454,7 @@
     </form>
     
     <!-- modal ENCARGOS --> 
-    <form  role="form" @submit.prevent="editarEncargos">
+    <form  role="form" @submit.prevent="editaEncargos">
       <div id="encargos" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mesanoLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -481,32 +481,35 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <td>Tipo do Encargo</td>
-                        <td class="text-right">R$ 000.000,00</td>
-                        <td class="d-flex justify-content-center"><span data-toggle="tooltip" data-container="body" data-placement="top" title="" role="tooltip" data-original-title="Editar">
-                          <button type="button" data-href="#" class="btn btn-warning btn-sm btn-toolbar"><i class="fas fa-pencil-alt"></i></button>
-                          </span> &nbsp;<span data-toggle="tooltip" data-container="body" data-placement="top" title="Remover" role="tooltip">
-                          <button type="button" data-href="#" class="btn btn-danger btn-sm btn-toolbar"><i class="fas fa-minus"></i></button>
-                          </span></td>
-                      </tr>
-                      <tr>
-                        <td><select class="form-control form-control-sm">
-                        	<option value="0" selected>Selecione...</option>
-                            <option value="1">Tipo 1</option>
-                            <option value="2">Tipo 2</option>
-                        </select></td>
-                        <td><input type="text" class="form-control form-control-sm"></td>
-                        <td class="d-flex justify-content-center"><span data-toggle="tooltip" data-container="body" data-placement="top" title="" role="tooltip" data-original-title="Adicionar">
-                          <button type="button" data-href="#" class="btn btn-success btn-sm btn-toolbar"><i class="fas fa-plus"></i></button>
-                          </span></td>
-                      </tr>
+                         <td>
+                         	<select class="form-control form-control-sm" v-model="encargo">
+                              <option value="">Selecione...</option>
+                              <option v-for="tipo in tipoEncargo" :value="tipo">{{tipo.deTipoLanc}}</option>
+                         	</select>
+                         </td>
+                         <td>
+                         	<input type="text" v-model="vlLanc" class="form-control form-control-sm">
+                         </td>
+                         <td class="d-flex justify-content-center"><span data-toggle="tooltip" data-container="body" data-placement="top" role="tooltip" data-original-title="Adicionar">
+                           <button type="button" @click="adicionaEncargo" class="btn btn-success btn-sm btn-toolbar"><i class="fas fa-plus"></i></button>
+                           </span></td>
+                       </tr>
+                       <tr v-for="encargo in encargos">
+                         <td>{{encargo.deTipoLanc}}</td>
+                         <td class="text-right">R$ {{encargo.vlLanc}}</td>
+                         <td class="d-flex justify-content-center"><span data-toggle="tooltip" data-container="body" data-placement="top" title="" role="tooltip" data-original-title="Editar">
+                           <button type="button"  class="btn btn-warning btn-sm btn-toolbar"><i class="fas fa-pencil-alt"></i></button>
+                           </span> &nbsp;<span data-toggle="tooltip" data-container="body" data-placement="top" title="Remover" role="tooltip">
+                           <button type="button" @click="deleteEncargo(encargo)" class="btn btn-danger btn-sm btn-toolbar"><i class="fas fa-minus"></i></button>
+                           </span></td>
+                       </tr>
                     </tbody>
                   </table>
                 </div>
               </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-sm btn-secondary" onClick="editar()">Salvar</button>
+              <button type="submit" class="btn btn-sm btn-secondary">Salvar</button>
             </div>
           </div>
           <!-- /.modal-content --> 

@@ -24,7 +24,7 @@ const app = new Vue({
 			qtd: 3,
 		},
 		encargos:[],
-		encargo:[],
+		encargo:'',
 		key:0,
 	},
 	mounted(){
@@ -189,6 +189,10 @@ const app = new Vue({
 			this.getFaturas();
 		},
 		adicionaEncargo(){
+			
+			if(this.encargo == '' || this.vlLanc == '')
+				return
+				
 			this.key += 1;
 			
 			this.encargos.push(
@@ -199,6 +203,9 @@ const app = new Vue({
 					vlLanc: this.vlLanc.replace('.','').replace(',','.'),
 				}
 			)
+			this.encargo = '';
+			this.vlLanc = '';
+			
 		},
 		removeEncargo(key){
 			this.encargos = this.encargos.filter(encargo => {
@@ -207,11 +214,11 @@ const app = new Vue({
 			});
 		},
 		abreIncluir(){
-			this.clear();
+			this.limpar();
 			$('#incluir').modal('show')
 		},
 		
-		clear(){
+		limpar(){
 			this.aba= 'mesanoTab';
 			this.dtInic='';
 			this.dtFim='';
@@ -225,7 +232,7 @@ const app = new Vue({
 			this.vlLancDemContr='';
 			this.vlLancDemTari='';
 			this.encargos=[];
-			this.encargo=[];
+			this.encargo='';
 			this.key=0;
 		},
 		
@@ -234,9 +241,14 @@ const app = new Vue({
 				   return item.tipoLancamento.lgEncg === 'S' ? acc += item.vlLanc : acc += 0;
                 },0)
 		},
-		
+		total(fatura){
+			return fatura.lancamentos.reduce((acc, item)=>{
+				   return acc += item.vlLanc;
+                },0)
+		},
 		
 		modalEditarData(dtInic, dtFim, cdFatr){
+			this.limpar();
 			this.dtInic = this.dataParaString(dtInic);
 			this.dtFim = this.dataParaString(dtFim);
 			this.cdFatr = cdFatr;
@@ -292,6 +304,74 @@ const app = new Vue({
 			})
 		})
 				
+			
+		},
+		modalEditaEncargos(cdFatr){
+			this.limpar();
+			this.cdFatr = cdFatr;
+			const encargos = this.faturas.filter(item=>item.cdFatr == cdFatr)[0].lancamentos.filter(item=>item.tipoLancamento.lgEncg === 'S');
+			
+			encargos.forEach(item => {
+				this.key += 1;
+				this.encargos.push(
+					{
+						key: this.key,
+						cdLanc: item.cdLanc,
+						deTipoLanc: item.tipoLancamento.deTipoLanc,
+						cdTipoLanc: item.tipoLancamento.cdTipoLanc,
+						vlLanc: item.vlLanc.toString().replace('.',','),
+					}
+				)
+			})
+			
+			$('#encargos').modal('show')
+		},
+		editaEncargos(){
+			const dados = {
+				cdFatr: this.cdFatr,
+				lancamentos: this.encargos
+			}
+			const conf = {
+					method: 'POST',
+					headers: {
+					      'Accept': 'application/json',
+					      'Content-Type': 'application/json'
+				    },
+					body: JSON.stringify(dados)
+				}
+		
+			fetch('editaEncargos', conf)
+			.then(resp => resp.json())
+			.then(data=>{
+				console.log(data.error)
+				if(data.error) {
+				 	swal('Erro','Nenhuma edição foi realizada. Erro Interno','error')
+					$('#encargos').modal('hide')
+				}else{
+					swal('Salvo!','A edição foi realizada com sucesso!','success')
+					this.getFaturas();
+					$('#encargos').modal('hide')
+				}
+			})
+		},
+		deleteEncargo(encargo){
+			const { cdLanc, key } = encargo 
+			
+			if(!cdLanc){
+				this.removeEncargo(encargo.key);
+				return
+			}
+			
+			fetch(`deleteEncargo?cdLanc=${cdLanc}`)
+			.then(resp => {
+				if(resp.status === 200){
+					this.removeEncargo(encargo.key);
+					this.getFaturas();
+				}else{
+					swal('Erro','Error Interno','error');
+					$('#encargos').modal('hide');
+				}
+			})
 			
 		},
 		dataParaString(data){

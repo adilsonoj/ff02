@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import br.mil.mar.amrj.DTO.FaturaDto;
+import br.mil.mar.amrj.DTO.LancamentoDto;
 import br.mil.mar.amrj.model.FaturaServico;
 import br.mil.mar.amrj.model.Paginacao;
 import br.mil.mar.amrj.model.TipoLancamento;
@@ -69,4 +70,14 @@ public class FaturaController {
 		faturaService.editarData(dto);
 	}
 	
+	@RequestMapping(value ="/editaEncargos", method = RequestMethod.POST)
+	public void editaEncargos(@RequestBody FaturaDto dto){
+		faturaService.editaEncargos(dto);
+	}
+	
+	@RequestMapping(value ="/deleteEncargo", method = RequestMethod.GET)
+	@ResponseBody
+	public void deleteEncargo(Integer cdLanc){
+		faturaService.deleteEncargo(cdLanc);
+	}
 }

@@ -7,7 +7,7 @@ public class LancamentoDto {
 	private BigDecimal vlLanc;
 	private Integer cdTipoLanc;
 	private char lgEncg;
-	
+	private Integer cdLanc;
 	
 	public BigDecimal getVlLanc() {
 		return vlLanc;
@@ -27,7 +27,10 @@ public class LancamentoDto {
 	public void setLgEncg(char lgEncg) {
 		this.lgEncg = lgEncg;
 	}
-	
-	
-	
+	public Integer getCdLanc() {
+		return cdLanc;
+	}
+	public void setCdLanc(Integer cdLanc) {
+		this.cdLanc = cdLanc;
+	}
 }

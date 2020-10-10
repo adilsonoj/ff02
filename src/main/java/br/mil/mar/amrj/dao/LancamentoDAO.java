@@ -29,7 +29,14 @@ public class LancamentoDAO {
 	}
 	
 	public void delete(Lancamento lancamento) {
-		((LancamentoDAO) em).delete(lancamento);		
+		em.remove(lancamento);		
+	}
+
+	public Lancamento getLancamento(Integer cdLanc) {
+		return em.createQuery("from Lancamento l where l.cdLanc =:cdLanc", Lancamento.class)
+		.setParameter("cdLanc", cdLanc)
+		.getSingleResult();
+		
 	}
 
 }
