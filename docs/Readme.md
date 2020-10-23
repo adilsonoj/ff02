@@ -1,1 +1,1 @@
-Pasta com especificações do FF02 (Sistema de Gerenciamento de Faturas)
+FF02 - Sistema de Gerenciamento de Faturas de Energia Elétrica
